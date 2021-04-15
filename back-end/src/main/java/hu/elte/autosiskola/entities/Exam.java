@@ -30,13 +30,14 @@ public class Exam {
     @Temporal(TemporalType.DATE)
     private Date examDate;
 
-    @JsonIgnore
+    /*@JsonIgnore
     @ManyToMany(mappedBy = "exams")
     private List<Student> students;
 
     @ManyToOne
     @JoinColumn
     private Instructor instructor;
+     */
 
     @JsonIgnore
     @OneToMany(mappedBy = "exam" )
