@@ -1,6 +1,7 @@
 package hu.elte.autosiskola.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -35,11 +36,7 @@ public class User {
     }
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
+    @ManyToMany
     private List<Exam> exams;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private List<Studentclass> studentclasses;
 
 }

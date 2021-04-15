@@ -43,4 +43,8 @@ public class Exam {
     @OneToMany(mappedBy = "exam" )
     private List<Studentclass> studentclasses;
 
+    @JsonIgnore
+    @ManyToMany
+    private List<User> users;
+
 }

@@ -1,11 +1,9 @@
-INSERT INTO instructor( name ) values ( 'Pisti' );
-INSERT INTO instructor( name ) values ( 'Béla' );
+INSERT INTO USER (name, password, role) VALUES ('Pisti', 'százhét', 'ROLE_INSTRUCTOR');
+INSERT INTO USER (name, password, role) VALUES ('Béla', 'százhat', 'ROLE_INSTRUCTOR');
+INSERT INTO USER (name, password, role) VALUES ('Dalma', 'százhárom', 'ROLE_ADMIN');
 
-INSERT INTO exam( instructor_id, exam_date, title ) values ( 1, '2020-07-11', 'kresz' );
-INSERT INTO exam( instructor_id, exam_date, title ) values ( 2, '2020-08-12', 'vezetés' );
+INSERT INTO EXAM( exam_date, title) values ( '2021-10-11', 'forgalmi');
+INSERT INTO EXAM( exam_date, title) values ( '2021-12-11', 'forgalmi');
+INSERT INTO EXAM( exam_date, title) values ( '2021-03-06', 'forgalmi');
 
-INSERT INTO studentclass ( start_date, end_date, exam_id ) values ('2020-05-30', '2020-06-10', 1);
-INSERT INTO studentclass ( start_date, end_date, exam_id ) values ('2020-04-30', '2020-07-10', 2);
-
-INSERT INTO student ( name, instructor_id, studentclass_id ) values ( 'Béci', 2, 1);
-INSERT INTO student ( name, instructor_id, studentclass_id ) values ( 'Géza', 1, 1);
+INSERT INTO EXAM( exam_date, title) values ( '2021-05-06', 'kresz');

@@ -15,8 +15,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().permitAll();
-/*                .authorizeRequests()
+        http //.authorizeRequests().anyRequest().permitAll();
+                .authorizeRequests()
                     .antMatchers("/", "/h2/**")
                     .permitAll()
                     .anyRequest()
@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .ignoringAntMatchers("/h2/**")
                     .and()
                 .httpBasic();
-        http.headers().frameOptions().disable();*/
+        http.headers().frameOptions().disable();
     }
 
     @Autowired

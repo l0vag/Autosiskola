@@ -24,17 +24,18 @@ public class UserController {
         return ResponseEntity.ok(userRepository.findAll());
     }
 
-    @PostMapping("")
+    @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(User.Role.ROLE_GUEST);
+        //user.setRole(User.Role.ROLE_GUEST);
         userRepository.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/promote")
     public ResponseEntity<User> update(@RequestBody User user) {
-        user.setRole(User.Role.ROLE_STUDENT);
+
+        //user.setRole(User.Role.ROLE_STUDENT);
         userRepository.save(user);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
