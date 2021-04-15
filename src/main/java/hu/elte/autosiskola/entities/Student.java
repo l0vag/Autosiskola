@@ -1,4 +1,4 @@
-package hu.elte.autosiskola.entities;
+/*package hu.elte.autosiskola.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,10 +25,6 @@ public class Student implements Serializable {
 
     @ManyToOne
     @JoinColumn
-    private Instructor instructor;
-
-    @ManyToOne
-    @JoinColumn
     private Studentclass studentclass;
 
     @ManyToMany
@@ -36,3 +32,4 @@ public class Student implements Serializable {
     private List<Exam> exams;
 
 }
+*/

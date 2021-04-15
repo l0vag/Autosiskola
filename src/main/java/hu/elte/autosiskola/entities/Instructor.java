@@ -1,4 +1,4 @@
-package hu.elte.autosiskola.entities;
+/*package hu.elte.autosiskola.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
@@ -35,3 +35,4 @@ public class Instructor {
     private List<Exam> exams;
 
 }
+*/

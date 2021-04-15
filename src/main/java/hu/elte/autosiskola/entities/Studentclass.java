@@ -34,7 +34,4 @@ public class Studentclass {
     @JoinColumn
     private Exam exam;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "studentclass")
-    private List<Student> students;
 }
