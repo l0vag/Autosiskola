@@ -39,4 +39,7 @@ public class User {
     @ManyToMany
     private List<Exam> exams;
 
+    @OneToMany(mappedBy = "user")
+    private List<Examresult> results;
+
 }

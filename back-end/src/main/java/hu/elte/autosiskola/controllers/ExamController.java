@@ -44,7 +44,7 @@ public class ExamController {
 
     @GetMapping("/available")
     public ResponseEntity<Iterable<Exam>> getAvail() {
-        return null;
+        return ResponseEntity.ok(examRepository.getAvailable());
     }
 }
 

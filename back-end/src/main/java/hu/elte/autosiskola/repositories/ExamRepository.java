@@ -5,10 +5,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 public interface ExamRepository extends CrudRepository<Exam, Integer> {
-    @Query(value = "SELECT * FROM exam WHERE exam.examDate > CURRENT_DATE ", nativeQuery = true)
-    Optional<Exam> getAvailable();
+
+    @Query(value = "SELECT * FROM exam WHERE exam.exam_date > CURRENT_DATE ", nativeQuery = true)
+    Iterable<Exam> getAvailable();
+
 }

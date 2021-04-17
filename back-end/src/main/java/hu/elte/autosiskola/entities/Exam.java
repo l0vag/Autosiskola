@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -30,15 +29,6 @@ public class Exam {
     @Temporal(TemporalType.DATE)
     private Date examDate;
 
-    /*@JsonIgnore
-    @ManyToMany(mappedBy = "exams")
-    private List<Student> students;
-
-    @ManyToOne
-    @JoinColumn
-    private Instructor instructor;
-     */
-
     @JsonIgnore
     @OneToMany(mappedBy = "exam" )
     private List<Studentclass> studentclasses;
@@ -46,5 +36,8 @@ public class Exam {
     @JsonIgnore
     @ManyToMany
     private List<User> users;
+
+    @OneToMany(mappedBy = "exam")
+    private List<Examresult> results;
 
 }
