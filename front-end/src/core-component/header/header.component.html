@@ -1,23 +1,46 @@
-<div class="flex-container">
-  <div id="logo">
-    <a [routerLink]="['/home']">AUTÓSISKOLA</a>
+<div id="header">
+  <div class="flex-container">
+    <div id="logo">
+      <a [routerLink]="['/home']">AUTÓSISKOLA</a>
+    </div>
+    <div id="nav-icon4" (click)="toggleOpen()" [ngClass]="{ open: isOpen }">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a [routerLink]="['/home']" routerLinkActive="active">Kezdőoldal</a>
+        </li>
+        <li>
+          <a [routerLink]="['/register']" routerLinkActive="active"
+            >Regisztrálok</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['/courses']" routerLinkActive="active">Kurzusok</a>
+        </li>
+        <li>
+          <a [routerLink]="['/exams']" routerLinkActive="active">Vizsgák</a>
+        </li>
+      </ul>
+    </nav>
   </div>
-  <nav>
-    <ul>
-      <li>
-        <a [routerLink]="['/home']" routerLinkActive="active">Kezdőoldal</a>
-      </li>
-      <li>
-        <a [routerLink]="['/register']" routerLinkActive="active"
-          >Regisztrálok</a
-        >
-      </li>
-      <li>
-        <a [routerLink]="['/courses']" routerLinkActive="active">Kurzusok</a>
-      </li>
-      <li>
-        <a [routerLink]="['/exams']" routerLinkActive="active">Vizsgák</a>
-      </li>
-    </ul>
-  </nav>
 </div>
+<nav [ngClass]="{ open: isOpen }">
+  <ul>
+    <li>
+      <a [routerLink]="['/home']" routerLinkActive="active">Kezdőoldal</a>
+    </li>
+    <li>
+      <a [routerLink]="['/register']" routerLinkActive="active">Regisztrálok</a>
+    </li>
+    <li>
+      <a [routerLink]="['/courses']" routerLinkActive="active">Kurzusok</a>
+    </li>
+    <li>
+      <a [routerLink]="['/exams']" routerLinkActive="active">Vizsgák</a>
+    </li>
+  </ul>
+</nav>

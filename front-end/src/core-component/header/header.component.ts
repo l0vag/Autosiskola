@@ -7,11 +7,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  isOpen: boolean;
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {}
 
   navigate(url: string) {
     this.router.navigateByUrl(url);
+  }
+
+  toggleOpen() {
+    this.isOpen = !this.isOpen;
   }
 }
