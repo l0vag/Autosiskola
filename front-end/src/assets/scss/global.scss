@@ -1,0 +1,53 @@
+@import "colors";
+
+html,
+body {
+  height: 100%;
+  font-family: "Noto Sans", sans-serif;
+}
+
+#main-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#header {
+  display: flex;
+}
+
+#main-content {
+  flex: 1 0 auto;
+  background-color: $bg-color;
+  padding: 20px;
+
+  margin-top: -75px;
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+#footer {
+  flex-shrink: 0;
+}
+
+.flex-container {
+  display: flex;
+  flex-shrink: 1;
+  width: 100%;
+}
+
+.centered {
+  padding: 100px 0;
+  margin: 0 auto;
+  text-align: center;
+
+  h1 {
+    font-size: 24px;
+    line-height: 48px;
+    font-weight: 600;
+  }
+
+  p {
+    line-height: 24px;
+  }
+}
