@@ -1,0 +1,32 @@
+@import "colors";
+
+#header {
+  background-color: $primary-color;
+  color: $bg-color;
+  padding: 20px;
+  display: flex;
+}
+
+#logo {
+  padding: 0;
+  display: flex;
+}
+
+nav {
+  display: flex;
+  margin: 0 0 0 auto;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+
+    li {
+      display: flex;
+      padding: 0 5px;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
