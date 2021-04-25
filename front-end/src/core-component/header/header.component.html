@@ -31,16 +31,36 @@
 <nav [ngClass]="{ open: isOpen }">
   <ul>
     <li>
-      <a [routerLink]="['/home']" routerLinkActive="active">Kezdőoldal</a>
+      <a
+        [routerLink]="['/home']"
+        routerLinkActive="active"
+        (click)="toggleOpen()"
+        >Kezdőoldal</a
+      >
     </li>
     <li>
-      <a [routerLink]="['/register']" routerLinkActive="active">Regisztrálok</a>
+      <a
+        [routerLink]="['/register']"
+        routerLinkActive="active"
+        (click)="toggleOpen()"
+        >Regisztrálok</a
+      >
     </li>
     <li>
-      <a [routerLink]="['/courses']" routerLinkActive="active">Kurzusok</a>
+      <a
+        [routerLink]="['/courses']"
+        routerLinkActive="active"
+        (click)="toggleOpen()"
+        >Kurzusok</a
+      >
     </li>
     <li>
-      <a [routerLink]="['/exams']" routerLinkActive="active">Vizsgák</a>
+      <a
+        [routerLink]="['/exams']"
+        routerLinkActive="active"
+        (click)="toggleOpen()"
+        >Vizsgák</a
+      >
     </li>
   </ul>
 </nav>
