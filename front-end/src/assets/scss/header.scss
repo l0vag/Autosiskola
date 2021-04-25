@@ -1,13 +1,16 @@
 @import "colors";
 
 #header {
-  background-color: $primary-color;
+  background-color: $secondary-color;
   color: $bg-color;
   padding: 20px;
   display: flex;
+  height: 60px;
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 0% 100%);
 }
 
 #logo {
+  font-weight: 600;
   padding: 0;
   display: flex;
 }
@@ -24,9 +27,7 @@ nav {
       display: flex;
       padding: 0 5px;
       cursor: pointer;
-      &:hover {
-        text-decoration: underline;
-      }
+      height: 35px;
     }
   }
 }
@@ -34,12 +35,14 @@ nav {
 a {
   text-decoration: none;
   color: #fff;
+  padding: 5px 20px;
 
   &:hover {
-    text-decoration: underline;
+    font-weight: 900;
   }
 
   &.active {
     font-weight: 900;
+    background-color: $primary-color;
   }
 }
