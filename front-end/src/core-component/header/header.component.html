@@ -1,7 +1,7 @@
 <div id="header">
   <div class="flex-container">
     <div id="logo">
-      <a [routerLink]="['/home']">AUTÓSISKOLA</a>
+      <a [routerLink]="['/home']" (click)="isOpen = false">AUTÓSISKOLA</a>
     </div>
     <div id="nav-icon4" (click)="toggleOpen()" [ngClass]="{ open: isOpen }">
       <span></span>
