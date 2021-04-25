@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
+import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
 
 @NgModule({
   declarations: [
@@ -12,8 +13,9 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     HomeComponent,
     PageNotFoundComponent,
+    ScrollToTopComponent,
   ],
   imports: [CommonModule, RouterModule],
-  exports: [HeaderComponent, FooterComponent],
+  exports: [HeaderComponent, FooterComponent, ScrollToTopComponent],
 })
 export class CoreComponentModule {}
