@@ -1,11 +1,23 @@
 <div class="flex-container">
-  <div id="logo">AUTÓSISKOLA</div>
+  <div id="logo">
+    <a [routerLink]="['/home']">AUTÓSISKOLA</a>
+  </div>
   <nav>
     <ul>
-      <li><a (click)="navigate('home')">Kezdőoldal</a></li>
-      <li>Regisztálok</li>
-      <li>Kurzusok</li>
-      <li>Vizsgák</li>
+      <li>
+        <a [routerLink]="['/home']" routerLinkActive="active">Kezdőoldal</a>
+      </li>
+      <li>
+        <a [routerLink]="['/register']" routerLinkActive="active"
+          >Regisztrálok</a
+        >
+      </li>
+      <li>
+        <a [routerLink]="['/courses']" routerLinkActive="active">Kurzusok</a>
+      </li>
+      <li>
+        <a [routerLink]="['/exams']" routerLinkActive="active">Vizsgák</a>
+      </li>
     </ul>
   </nav>
 </div>

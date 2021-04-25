@@ -30,3 +30,16 @@ nav {
     }
   }
 }
+
+a {
+  text-decoration: none;
+  color: #fff;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.active {
+    font-weight: 900;
+  }
+}
