@@ -1,0 +1,15 @@
+<form [formGroup]="profileForm">
+  <div>
+    <label>
+      Felhasználónév:
+      <input type="text" formControlName="userName" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Jelszó:
+      <input type="password" formControlName="password" />
+    </label>
+  </div>
+  <button (click)="submit()">Regisztrálok</button>
+</form>

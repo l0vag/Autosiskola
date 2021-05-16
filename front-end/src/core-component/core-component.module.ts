@@ -6,6 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
 import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
+import { RegisterComponent } from './register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,8 +16,9 @@ import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
     HomeComponent,
     PageNotFoundComponent,
     ScrollToTopComponent,
+    RegisterComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   exports: [HeaderComponent, FooterComponent, ScrollToTopComponent],
 })
 export class CoreComponentModule {}
