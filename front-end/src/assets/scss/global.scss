@@ -11,6 +11,7 @@ body {
   flex-direction: column;
   min-height: 100%;
   min-width: 280px;
+  background-color: $bg-color;
 }
 
 #header {
@@ -19,12 +20,12 @@ body {
 
 #main-content {
   flex: 1 0 auto;
-  background-color: $bg-color;
   padding: 20px;
 
-  margin-top: -75px;
+  margin: -75px auto 0 auto;
   padding-top: 75px;
   padding-bottom: 75px;
+  max-width: 1240px;
 }
 
 #footer {
@@ -35,6 +36,8 @@ body {
   display: flex;
   flex-shrink: 1;
   width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 .centered {
@@ -76,7 +79,24 @@ input {
   }
 }
 
-button {
+.flex-wrap-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.courses-card {
+  max-width: 300px;
+  margin: 0 0 20px;
+}
+
+h1 {
+  width: fit-content;
+  margin: 20px auto !important;
+}
+
+/* button {
   background-color: $secondary-color;
   color: #fff;
   border-radius: 8px;
@@ -91,4 +111,4 @@ button {
     transform: scale(0.9);
     transition: ease-in-out;
   }
-}
+} */

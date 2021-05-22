@@ -8,6 +8,9 @@ import { RouterModule } from '@angular/router';
 import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterailModule } from 'src/app/shared/materail.module';
+import { CoursesComponent } from './courses/courses.component';
+import { ExamsComponent } from './exams/exams.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +20,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     PageNotFoundComponent,
     ScrollToTopComponent,
     RegisterComponent,
+    CoursesComponent,
+    ExamsComponent,
   ],
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterailModule],
   exports: [HeaderComponent, FooterComponent, ScrollToTopComponent],
 })
 export class CoreComponentModule {}

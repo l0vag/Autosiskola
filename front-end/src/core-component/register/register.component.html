@@ -1,15 +1,16 @@
 <form [formGroup]="profileForm">
   <div>
+    <h1>Regisztrálok</h1>
     <label>
-      Felhasználónév:
+      <div>Felhasználónév:</div>
       <input type="text" formControlName="userName" />
     </label>
   </div>
   <div>
     <label>
-      Jelszó:
+      <div>Jelszó:</div>
       <input type="password" formControlName="password" />
     </label>
   </div>
-  <button (click)="submit()">Regisztrálok</button>
+  <button mat-raised-button (click)="submit()">Regisztrálok</button>
 </form>

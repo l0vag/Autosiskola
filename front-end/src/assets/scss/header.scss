@@ -42,6 +42,10 @@ nav {
   }
 }
 
+.hamburger-menu-nav {
+  display: none;
+}
+
 a {
   text-decoration: none;
   color: #fff;
@@ -151,6 +155,7 @@ a {
   nav.open {
     border-radius: 5px;
     position: absolute;
+    z-index: 1;
     display: initial;
     top: 49px;
     right: 54px;
