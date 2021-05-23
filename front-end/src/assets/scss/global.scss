@@ -86,29 +86,13 @@ input {
   align-items: center;
 }
 
-.courses-card {
+.custom-card {
   max-width: 300px;
-  margin: 0 0 20px;
+  margin: 0 10px 20px;
+  text-align: left;
 }
 
 h1 {
   width: fit-content;
   margin: 20px auto !important;
 }
-
-/* button {
-  background-color: $secondary-color;
-  color: #fff;
-  border-radius: 8px;
-  border: none;
-  padding: 10px 20px;
-
-  &:hover {
-    background-color: $primary-color;
-  }
-
-  &:active {
-    transform: scale(0.9);
-    transition: ease-in-out;
-  }
-} */

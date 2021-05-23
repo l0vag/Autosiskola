@@ -24,6 +24,11 @@
         <li>
           <a [routerLink]="['/exams']" routerLinkActive="active">Vizsgák</a>
         </li>
+        <li>
+          <a [routerLink]="['/users']" routerLinkActive="active"
+            >Felhasználók</a
+          >
+        </li>
       </ul>
     </nav>
   </div>
@@ -61,6 +66,9 @@
         (click)="toggleOpen()"
         >Vizsgák</a
       >
+    </li>
+    <li>
+      <a [routerLink]="['/users']" routerLinkActive="active">Felhasználók</a>
     </li>
   </ul>
 </nav>

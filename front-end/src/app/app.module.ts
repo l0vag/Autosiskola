@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreComponentModule } from '../core-component/core-component.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterailModule } from './shared/materail.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { MaterailModule } from './shared/materail.module';
     CoreComponentModule,
     BrowserAnimationsModule,
     MaterailModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

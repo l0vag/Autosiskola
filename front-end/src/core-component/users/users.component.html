@@ -1,10 +1,10 @@
-<h1>Vizsgák</h1>
+<h1>Felhasználók</h1>
 
 <div class="centered flex-wrap-container" style="padding: 20px 0">
-  <mat-card class="custom-card" *ngFor="let exam of examList">
+  <mat-card class="custom-card" *ngFor="let user of userList">
     <mat-card-header>
-      <mat-card-title>{{ exam.title }}</mat-card-title>
-      <mat-card-subtitle>{{ exam.examDate }}</mat-card-subtitle>
+      <mat-card-title>{{ user.name }}</mat-card-title>
+      <mat-card-subtitle>password: {{ user.password }}</mat-card-subtitle>
     </mat-card-header>
     <img
       mat-card-image
@@ -16,6 +16,7 @@
         The Shiba Inu is the smallest of the six original and distinct spitz
         breeds of dog from Japan.
       </p>
+      <p>{{ user.role }}</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>LIKE</button>

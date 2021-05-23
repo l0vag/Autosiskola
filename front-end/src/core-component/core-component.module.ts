@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterailModule } from 'src/app/shared/materail.module';
 import { CoursesComponent } from './courses/courses.component';
 import { ExamsComponent } from './exams/exams.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ExamsComponent } from './exams/exams.component';
     RegisterComponent,
     CoursesComponent,
     ExamsComponent,
+    UsersComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterailModule],
   exports: [HeaderComponent, FooterComponent, ScrollToTopComponent],
