@@ -26,4 +26,20 @@ export class UsersComponent implements OnInit {
       () => this.loaderService.isShow.next(false)
     );
   }
+
+  deleteUser(id: number) {
+    this.userService.deleteById(id);
+
+    this.userService.getUsers().subscribe((data) => {
+      this.userList = data;
+    });
+  }
+
+  makeStudent(id: number) {
+    this.userService.makeStudent(id);
+
+    this.userService.getUsers().subscribe((data) => {
+      this.userList = data;
+    });
+  }
 }

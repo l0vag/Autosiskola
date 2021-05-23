@@ -4,6 +4,7 @@ export interface IUser {
   password: string;
   role: string;
   results: Array<any>;
+  courses: Array<any>;
 }
 
 export interface IExam {
@@ -11,4 +12,11 @@ export interface IExam {
   title: string;
   examDate: string;
   results: Array<any>;
+}
+
+export interface ICourse {
+  id: number;
+  title: string;
+  startDate: string;
+  finishDate: string;
 }

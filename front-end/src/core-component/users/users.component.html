@@ -5,6 +5,14 @@
     <mat-card-header>
       <mat-card-title>{{ user.name }}</mat-card-title>
       <mat-card-subtitle>password: {{ user.password }}</mat-card-subtitle>
+      <button
+        mat-raised-button
+        color="warn"
+        style="margin: 0 0 30px auto"
+        (click)="deleteUser(user.id)"
+      >
+        Törlés
+      </button>
     </mat-card-header>
     <img
       *ngIf="user.role == 'ROLE_STUDENT'"
@@ -39,7 +47,11 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button>Adatlap</button>
-      <button *ngIf="user.role == 'ROLE_GUEST'" mat-raised-button>
+      <button
+        *ngIf="user.role == 'ROLE_GUEST'"
+        mat-raised-button
+        (click)="makeStudent(user.id)"
+      >
         Tanulóvá teszem
       </button>
     </mat-card-actions>

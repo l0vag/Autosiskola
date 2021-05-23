@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/shared/auth.service';
 import { LoaderService } from '../global-loader/shared/loader.service';
 import { RegisterService } from './shared/register.service';
 
@@ -29,22 +30,28 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private registerService: RegisterService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {}
 
   submit() {
+    let name = this.profileForm.get('userName').value;
+    let pwd = this.profileForm.get('password').value;
     if (this.profileForm.valid) {
       this.loaderService.isShow.next(true);
       console.log(this.profileForm);
       this.registerService
         .register({
-          name: this.profileForm.get('userName').value,
-          password: this.profileForm.get('password').value,
+          name: name,
+          password: pwd,
         })
         .subscribe(
-          (data) => console.log('post answer: ', data),
+          (data) => {
+            console.log('post answer: ', data);
+            this.authService.login(name, pwd);
+          },
           (error) => {
             console.log('ERROR: ', error);
             this.loaderService.isShow.next(false);

@@ -14,7 +14,10 @@
           <a [routerLink]="['/home']" routerLinkActive="active">Kezdőoldal</a>
         </li>
         <li>
-          <a [routerLink]="['/register']" routerLinkActive="active"
+          <a
+            *ngIf="!isAuthenticated"
+            [routerLink]="['/register']"
+            routerLinkActive="active"
             >Regisztrálok</a
           >
         </li>
@@ -27,6 +30,11 @@
         <li>
           <a [routerLink]="['/users']" routerLinkActive="active"
             >Felhasználók</a
+          >
+        </li>
+        <li *ngIf="!isAuthenticated">
+          <a [routerLink]="['/login']" routerLinkActive="active"
+            >Bejelentkezek</a
           >
         </li>
       </ul>
@@ -43,7 +51,7 @@
         >Kezdőoldal</a
       >
     </li>
-    <li>
+    <li *ngIf="!isAuthenticated">
       <a
         [routerLink]="['/register']"
         routerLinkActive="active"
@@ -73,6 +81,14 @@
         routerLinkActive="active"
         (click)="toggleOpen()"
         >Felhasználók</a
+      >
+    </li>
+    <li *ngIf="!isAuthenticated">
+      <a
+        [routerLink]="['/login']"
+        routerLinkActive="active"
+        (click)="toggleOpen()"
+        >Bejelentkezek</a
       >
     </li>
   </ul>

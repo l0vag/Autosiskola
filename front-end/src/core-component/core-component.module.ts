@@ -13,6 +13,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { ExamsComponent } from './exams/exams.component';
 import { UsersComponent } from './users/users.component';
 import { GlobalLoaderComponent } from './global-loader/global-loader.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { GlobalLoaderComponent } from './global-loader/global-loader.component';
     ExamsComponent,
     UsersComponent,
     GlobalLoaderComponent,
+    LoginComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterailModule],
   exports: [
