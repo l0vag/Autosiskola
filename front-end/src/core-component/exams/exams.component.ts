@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExamService } from 'src/core-component/exams/shared/exam.service';
 import { IExam } from 'src/models.model';
+import { LoaderService } from '../global-loader/shared/loader.service';
 
 @Component({
   selector: 'app-exams',
@@ -8,18 +9,21 @@ import { IExam } from 'src/models.model';
 })
 export class ExamsComponent implements OnInit {
   examList: Array<IExam>;
-  isFinished = false;
 
-  constructor(private examService: ExamService) {}
+  constructor(
+    private examService: ExamService,
+    private loaderService: LoaderService
+  ) {}
 
   ngOnInit(): void {
+    this.loaderService.isShow.next(true);
     this.examService.getExams().subscribe(
       (data) => {
         this.examList = data;
         console.log('EXAMS: ', this.examList);
       },
       (error) => console.log(error),
-      () => (this.isFinished = true)
+      () => this.loaderService.isShow.next(false)
     );
   }
 }

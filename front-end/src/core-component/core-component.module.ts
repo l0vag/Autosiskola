@@ -12,6 +12,7 @@ import { MaterailModule } from 'src/app/shared/materail.module';
 import { CoursesComponent } from './courses/courses.component';
 import { ExamsComponent } from './exams/exams.component';
 import { UsersComponent } from './users/users.component';
+import { GlobalLoaderComponent } from './global-loader/global-loader.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,14 @@ import { UsersComponent } from './users/users.component';
     CoursesComponent,
     ExamsComponent,
     UsersComponent,
+    GlobalLoaderComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterailModule],
-  exports: [HeaderComponent, FooterComponent, ScrollToTopComponent],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    ScrollToTopComponent,
+    GlobalLoaderComponent,
+  ],
 })
 export class CoreComponentModule {}
