@@ -68,7 +68,12 @@
       >
     </li>
     <li>
-      <a [routerLink]="['/users']" routerLinkActive="active">Felhasználók</a>
+      <a
+        [routerLink]="['/users']"
+        routerLinkActive="active"
+        (click)="toggleOpen()"
+        >Felhasználók</a
+      >
     </li>
   </ul>
 </nav>

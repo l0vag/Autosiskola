@@ -1,16 +1,51 @@
-<form [formGroup]="profileForm">
+<form [formGroup]="profileForm" *ngIf="!success && !error">
   <div>
     <h1>Regisztrálok</h1>
-    <label>
-      <div>Felhasználónév:</div>
-      <input type="text" formControlName="userName" />
-    </label>
+    <mat-form-field>
+      <mat-label>Felhasználónév</mat-label>
+      <input
+        matInput
+        placeholder="pl: Tóth Imre"
+        type="text"
+        formControlName="userName"
+      />
+    </mat-form-field>
+  </div>
+  <div
+    *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+    class="alert alert-danger"
+  >
+    <div *ngIf="userName.errors?.required">Név megadása kötelező</div>
+    <div *ngIf="userName.errors?.minlength">
+      A névnek legalább 3 betű hosszúnak kell lennie.
+    </div>
   </div>
   <div>
-    <label>
-      <div>Jelszó:</div>
-      <input type="password" formControlName="password" />
-    </label>
+    <mat-form-field>
+      <mat-label>Jelszó</mat-label>
+      <input
+        matInput
+        placeholder="pl: xxxxxx :)"
+        type="password"
+        formControlName="password"
+      />
+    </mat-form-field>
   </div>
   <button mat-raised-button (click)="submit()">Regisztrálok</button>
 </form>
+
+<div *ngIf="success">
+  <div class="centered home">
+    <img src="./assets/images/svg/smiley.svg" alt="" />
+    <h1>Siker</h1>
+    <p>Sikeresen regisztráltál!</p>
+  </div>
+</div>
+
+<div *ngIf="error">
+  <div class="centered home">
+    <img src="./assets/images/svg/sad-face.svg" alt="sad_face" />
+    <h1>Baj van.</h1>
+    <p>Valami baj történt!</p>
+  </div>
+</div>

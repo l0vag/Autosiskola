@@ -7,9 +7,28 @@
       <mat-card-subtitle>password: {{ user.password }}</mat-card-subtitle>
     </mat-card-header>
     <img
+      *ngIf="user.role == 'ROLE_STUDENT'"
       mat-card-image
-      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-      alt="Photo of a Shiba Inu"
+      src="../../assets/images/avatar1.png"
+      alt="avatar"
+    />
+    <img
+      *ngIf="user.role == 'ROLE_GUEST'"
+      mat-card-image
+      src="../../assets/images/avatar2.png"
+      alt="avatar"
+    />
+    <img
+      *ngIf="user.role == 'ROLE_INSTRUCTOR'"
+      mat-card-image
+      src="../../assets/images/avatar3.png"
+      alt="avatar"
+    />
+    <img
+      *ngIf="user.role == 'ROLE_ADMIN'"
+      mat-card-image
+      src="../../assets/images/avatar4.png"
+      alt="avatar"
     />
     <mat-card-content>
       <p>
@@ -19,8 +38,10 @@
       <p>{{ user.role }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+      <button mat-raised-button>Adatlap</button>
+      <button *ngIf="user.role == 'ROLE_GUEST'" mat-raised-button>
+        Tanulóvá teszem
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>
