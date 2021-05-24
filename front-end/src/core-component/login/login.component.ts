@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
 import { LoaderService } from '../global-loader/shared/loader.service';
 
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -42,8 +44,14 @@ export class LoginComponent implements OnInit {
         this.profileForm.get('password').value
       );
       this.loaderService.isShow.next(false);
-      this.success = user !== undefined;
-      this.error = !this.success;
+      if (user !== undefined) {
+        this.router.navigateByUrl('/home');
+      } else {
+        this.error = true;
+        setTimeout(() => {
+          this.error = false;
+        }, 3000);
+      }
     } else {
       this.profileForm.markAllAsTouched();
     }

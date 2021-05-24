@@ -29,4 +29,8 @@ export class ExamService {
       examDate: examDate,
     });
   }
+
+  deleteExam(id: number) {
+    this.exams = this.exams.filter((u) => u.id !== id);
+  }
 }

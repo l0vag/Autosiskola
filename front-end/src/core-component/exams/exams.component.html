@@ -5,6 +5,14 @@
     <mat-card-header>
       <mat-card-title>{{ exam.title }}</mat-card-title>
       <mat-card-subtitle>{{ exam.examDate }}</mat-card-subtitle>
+      <button
+        mat-raised-button
+        color="warn"
+        style="margin: 0 0 30px auto"
+        (click)="deleteExam(exam.id)"
+      >
+        Törlés
+      </button>
     </mat-card-header>
     <img
       mat-card-image

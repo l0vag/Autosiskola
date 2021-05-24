@@ -8,6 +8,14 @@
   <mat-card class="custom-card" *ngFor="let course of courses">
     <mat-card-header>
       <mat-card-title>{{ course.title }}</mat-card-title>
+      <button
+        mat-raised-button
+        color="warn"
+        style="margin: 0 0 30px auto"
+        (click)="deleteCourse(course.id)"
+      >
+        Törlés
+      </button>
     </mat-card-header>
     <img
       *ngIf="course.title === 'kresz'"
@@ -26,7 +34,7 @@
       <p>vége: {{ course.finishDate }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button>Jelentkezek</button>
+      <button mat-raised-button>Jelentkezem</button>
     </mat-card-actions>
   </mat-card>
 </div>

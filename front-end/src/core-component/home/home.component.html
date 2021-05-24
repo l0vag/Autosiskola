@@ -1,5 +1,14 @@
 <div class="centered home">
   <img src="./assets/images/svg/smiley.svg" alt="" />
-  <h1>Üdvözlünk</h1>
+  <div *ngIf="!authUser">
+    <h1>Üdvözlünk</h1>
+  </div>
+  <div *ngIf="authUser">
+    <h1>Kedves {{ authUser.name }}!</h1>
+  </div>
   <p>Üdvözlünk az autósikola honlapján!</p>
+
+  <button *ngIf="authUser" mat-raised-button (click)="showProfile()">
+    Adatlapom
+  </button>
 </div>

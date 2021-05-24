@@ -15,6 +15,7 @@ import { UsersComponent } from './users/users.component';
 import { GlobalLoaderComponent } from './global-loader/global-loader.component';
 import { LoginComponent } from './login/login.component';
 import { CreateNewDialogComponent } from './courses/new-course/create-new-dialog.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CreateNewDialogComponent } from './courses/new-course/create-new-dialog
     GlobalLoaderComponent,
     LoginComponent,
     CreateNewDialogComponent,
+    ProfileComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterailModule],
   exports: [

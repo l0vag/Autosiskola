@@ -31,21 +31,13 @@
       />
     </mat-form-field>
   </div>
-  <button mat-raised-button (click)="submit()">Regisztrálok</button>
+  <button mat-raised-button (click)="submit()">Bejelentkezek</button>
 </form>
-
-<div *ngIf="success">
-  <div class="centered home">
-    <img src="./assets/images/svg/smiley.svg" alt="" />
-    <h1>Siker</h1>
-    <p>Sikeresen regisztráltál!</p>
-  </div>
-</div>
 
 <div *ngIf="error">
   <div class="centered home">
     <img src="./assets/images/svg/sad-face.svg" alt="sad_face" />
-    <h1>Baj van.</h1>
-    <p>Valami baj történt!</p>
+    <h1>Valami baj történt!</h1>
+    <p>Nem jó adatokat adtál meg</p>
   </div>
 </div>

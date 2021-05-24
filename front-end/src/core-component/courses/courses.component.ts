@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { ICourse } from 'src/models.model';
 import { CreateNewDialogComponent } from './new-course/create-new-dialog.component';
 import { CoursesService } from './shared/courses.service';
@@ -8,8 +10,10 @@ import { CoursesService } from './shared/courses.service';
   selector: 'app-courses',
   templateUrl: './courses.component.html',
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent implements OnInit, OnDestroy {
+  private readonly unsubscriber$: Subject<void> = new Subject();
   courses: ICourse[];
+  sub: Subscription;
 
   constructor(
     private coursesService: CoursesService,
@@ -19,6 +23,7 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
     this.coursesService
       .getCourses()
+      .pipe(takeUntil(this.unsubscriber$))
       .subscribe((courses) => (this.courses = courses));
   }
 
@@ -43,5 +48,19 @@ export class CoursesComponent implements OnInit {
         );
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscriber$.next();
+    this.unsubscriber$.complete();
+  }
+
+  deleteCourse(id: number) {
+    this.coursesService.deleteCourse(id);
+
+    this.coursesService
+      .getCourses()
+      .pipe(takeUntil(this.unsubscriber$))
+      .subscribe((courses) => (this.courses = courses));
   }
 }

@@ -47,4 +47,8 @@ export class CoursesService {
       finishDate: finishDate,
     });
   }
+
+  deleteCourse(id: number) {
+    this.courses = this.courses.filter((u) => u.id !== id);
+  }
 }

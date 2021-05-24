@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 import { UserService } from 'src/core-component/users/shared/user.service';
 import { IUser } from 'src/models.model';
 
@@ -7,35 +7,39 @@ import { IUser } from 'src/models.model';
   providedIn: 'root',
 })
 export class AuthService {
-  _isAuthenticated: Subject<boolean> = new Subject();
-  user: IUser = null;
+  private _isAuthenticated: Subject<boolean> = new Subject();
+  private _user: ReplaySubject<IUser> = new ReplaySubject(1);
 
   public readonly isAuthenticated = this._isAuthenticated.asObservable();
+  public readonly user = this._user.asObservable();
 
   constructor(private userService: UserService) {}
 
   authenticate(name: string, password: string) {
-    this.user = this.userService.getUser(name);
+    let user = this.userService.getUser(name);
+    this._user.next(user);
 
-    if (this.user) {
-      this._isAuthenticated.next(this.user.password === password);
+    if (user) {
+      this._isAuthenticated.next(user.password === password);
     } else {
       this._isAuthenticated.next(false);
     }
   }
 
   login(name: string, password: string): IUser {
-    this.user = this.userService.getUser(name);
+    let user = this.userService.getUser(name);
+    this._user.next(user);
 
-    if (this.user) {
-      this._isAuthenticated.next(this.user.password === password);
+    if (user) {
+      this._isAuthenticated.next(user.password === password);
+    } else {
+      this._isAuthenticated.next(false);
     }
-
-    return this.user;
+    return user;
   }
 
   logout() {
     this._isAuthenticated.next(false);
-    this.user = null;
+    this._user = null;
   }
 }
