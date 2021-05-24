@@ -46,7 +46,9 @@
       <p>{{ user.role }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button>Adatlap</button>
+      <button [routerLink]="['/student', user.id]" mat-raised-button>
+        Adatlap
+      </button>
       <button
         *ngIf="user.role == 'ROLE_GUEST'"
         mat-raised-button

@@ -7,7 +7,7 @@ import { IUser } from 'src/models.model';
   providedIn: 'root',
 })
 export class AuthService {
-  private _isAuthenticated: Subject<boolean> = new Subject();
+  private _isAuthenticated: ReplaySubject<boolean> = new ReplaySubject();
   private _user: ReplaySubject<IUser> = new ReplaySubject(1);
 
   public readonly isAuthenticated = this._isAuthenticated.asObservable();
@@ -17,29 +17,33 @@ export class AuthService {
 
   authenticate(name: string, password: string) {
     let user = this.userService.getUser(name);
+    let validPassword = user.password === password;
     this._user.next(user);
 
-    if (user) {
-      this._isAuthenticated.next(user.password === password);
-    } else {
-      this._isAuthenticated.next(false);
-    }
+    this.broadcast(user, validPassword);
   }
 
   login(name: string, password: string): IUser {
     let user = this.userService.getUser(name);
-    this._user.next(user);
+    let validPassword = user?.password === password;
 
-    if (user) {
-      this._isAuthenticated.next(user.password === password);
-    } else {
-      this._isAuthenticated.next(false);
-    }
+    this.broadcast(user, validPassword);
+
     return user;
   }
 
   logout() {
     this._isAuthenticated.next(false);
-    this._user = null;
+    this._user.next(undefined);
+  }
+
+  private broadcast(user: IUser, valid: boolean) {
+    if (user && valid) {
+      this._isAuthenticated.next(valid);
+      this._user.next(user);
+    } else {
+      this._isAuthenticated.next(false);
+      this._user.next(undefined);
+    }
   }
 }

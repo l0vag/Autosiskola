@@ -80,6 +80,22 @@ export class UserService {
         results: [],
         courses: [],
       },
+      {
+        id: 9,
+        name: 'guest',
+        password: 'guest',
+        role: 'ROLE_GUEST',
+        results: [],
+        courses: [],
+      },
+      {
+        id: 10,
+        name: 'admin',
+        password: 'admin',
+        role: 'ROLE_ADMIN',
+        results: [],
+        courses: [],
+      },
     ];
   }
 

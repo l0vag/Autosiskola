@@ -1,6 +1,12 @@
 <h1>Kurzusok</h1>
 
-<div class="admin-section">
+<div
+  *ngIf="
+    (user && user.role === 'ROLE_INSTRUCTOR') ||
+    (user && user.role === 'ROLE_ADMIN')
+  "
+  class="admin-section"
+>
   <button mat-raised-button (click)="openDialog()">Új kurzus</button>
 </div>
 
@@ -9,6 +15,10 @@
     <mat-card-header>
       <mat-card-title>{{ course.title }}</mat-card-title>
       <button
+        *ngIf="
+          (user && user.role === 'ROLE_INSTRUCTOR') ||
+          (user && user.role === 'ROLE_ADMIN')
+        "
         mat-raised-button
         color="warn"
         style="margin: 0 0 30px auto"
@@ -34,7 +44,9 @@
       <p>vége: {{ course.finishDate }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button>Jelentkezem</button>
+      <button *ngIf="user && user.role === 'ROLE_STUDENT'" mat-raised-button>
+        Jelentkezem
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -9,6 +9,7 @@ import { MaterailModule } from './shared/materail.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthGuardService } from './shared/auth-guard.service';
+import { RoleGuardService } from './shared/role-guard.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,7 @@ import { AuthGuardService } from './shared/auth-guard.service';
     HttpClientModule,
     MatDialogModule,
   ],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService, RoleGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

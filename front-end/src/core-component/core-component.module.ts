@@ -16,6 +16,8 @@ import { GlobalLoaderComponent } from './global-loader/global-loader.component';
 import { LoginComponent } from './login/login.component';
 import { CreateNewDialogComponent } from './courses/new-course/create-new-dialog.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProfileCardComponent } from './profile-card/profile-card.component';
+import { StudentComponent } from './student/student.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     CreateNewDialogComponent,
     ProfileComponent,
+    ProfileCardComponent,
+    StudentComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterailModule],
   exports: [

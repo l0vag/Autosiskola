@@ -1,20 +1,30 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
 @Injectable()
-export class AuthGuardService implements CanActivate, OnDestroy {
-  private isAuthenticated: boolean;
-  private sub: Subscription;
+export class AuthGuardService implements CanActivate, OnInit, OnDestroy {
+  private readonly unsubscriber$: Subject<void> = new Subject();
 
-  constructor(public auth: AuthService, public router: Router) {
-    this.sub = this.auth.isAuthenticated.subscribe(
-      (isAuth) => (this.isAuthenticated = isAuth)
-    );
+  private isAuthenticated: boolean;
+
+  constructor(public auth: AuthService, public router: Router) {}
+
+  async ngOnInit() {
+    await this.auth.isAuthenticated
+      .pipe(takeUntil(this.unsubscriber$))
+      .subscribe((isAuth) => (this.isAuthenticated = isAuth));
   }
 
-  canActivate(): boolean {
+  async canActivate(): Promise<boolean> {
+    if (!this.isAuthenticated) {
+      await this.auth.isAuthenticated
+        .pipe(takeUntil(this.unsubscriber$))
+        .subscribe((isAuth) => (this.isAuthenticated = isAuth));
+    }
+
     if (!this.isAuthenticated) {
       this.router.navigateByUrl('/login');
       return false;
@@ -23,6 +33,7 @@ export class AuthGuardService implements CanActivate, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.unsubscriber$.next();
+    this.unsubscriber$.complete();
   }
 }

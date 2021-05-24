@@ -7,7 +7,6 @@ import { IUser } from 'src/models.model';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   private readonly unsubscriber$: Subject<void> = new Subject();

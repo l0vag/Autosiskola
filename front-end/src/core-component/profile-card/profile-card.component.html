@@ -1,0 +1,27 @@
+<div>
+  <div>
+    <strong> Név: </strong>
+    {{ person.name }}
+  </div>
+  <div>
+    <strong> Szerepkör: </strong>
+    {{ person.role }}
+  </div>
+  <div>
+    Jelszó:
+    {{ person.password }}
+  </div>
+  <div>
+    <strong> Kurzusok: </strong>
+    <div *ngFor="let course of person.courses">
+      Kurzus neve: {{ course.title }} Kezdete: {{ course.title }} Vége:
+      {{ course.title }}
+    </div>
+  </div>
+  <div>
+    <strong> Eredmények: </strong>
+    <div *ngFor="let result of person.results">
+      {{ result | json }}
+    </div>
+  </div>
+</div>

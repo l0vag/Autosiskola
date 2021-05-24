@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ICourse } from 'src/models.model';
+import { AuthService } from 'src/app/shared/auth.service';
+import { ICourse, IUser } from 'src/models.model';
 import { CreateNewDialogComponent } from './new-course/create-new-dialog.component';
 import { CoursesService } from './shared/courses.service';
 
@@ -14,9 +15,11 @@ export class CoursesComponent implements OnInit, OnDestroy {
   private readonly unsubscriber$: Subject<void> = new Subject();
   courses: ICourse[];
   sub: Subscription;
+  user: IUser;
 
   constructor(
     private coursesService: CoursesService,
+    private auth: AuthService,
     private dialog: MatDialog
   ) {}
 
@@ -25,6 +28,10 @@ export class CoursesComponent implements OnInit, OnDestroy {
       .getCourses()
       .pipe(takeUntil(this.unsubscriber$))
       .subscribe((courses) => (this.courses = courses));
+
+    this.auth.user
+      .pipe(takeUntil(this.unsubscriber$))
+      .subscribe((user) => (this.user = user));
   }
 
   openDialog() {

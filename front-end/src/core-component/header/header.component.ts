@@ -33,6 +33,11 @@ export class HeaderComponent implements OnInit {
     this.isOpen = !this.isOpen;
   }
 
+  logout() {
+    this.auth.logout();
+    this.router.navigateByUrl('/home');
+  }
+
   ngOnDestroy(): void {
     this.unsubscriber$.next();
     this.unsubscriber$.complete();

@@ -1,5 +1,4 @@
 <div *ngIf="authUser">
   <h1>Profilom</h1>
-
-  Név: {{ authUser.name }}
+  <app-profile-card [person]="authUser"></app-profile-card>
 </div>

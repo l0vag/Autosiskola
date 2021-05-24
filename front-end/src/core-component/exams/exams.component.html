@@ -6,6 +6,10 @@
       <mat-card-title>{{ exam.title }}</mat-card-title>
       <mat-card-subtitle>{{ exam.examDate }}</mat-card-subtitle>
       <button
+        *ngIf="
+          (user && user.role === 'ROLE_INSTRUCTOR') ||
+          (user && user.role === 'ROLE_ADMIN')
+        "
         mat-raised-button
         color="warn"
         style="margin: 0 0 30px auto"
@@ -26,7 +30,9 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button>Jelentkezem</button>
+      <button *ngIf="user && user.role === 'ROLE_STUDENT'" mat-raised-button>
+        Jelentkezem
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

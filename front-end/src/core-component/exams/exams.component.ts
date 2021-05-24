@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AuthService } from 'src/app/shared/auth.service';
 import { ExamService } from 'src/core-component/exams/shared/exam.service';
-import { IExam } from 'src/models.model';
+import { IExam, IUser } from 'src/models.model';
 import { LoaderService } from '../global-loader/shared/loader.service';
 
 @Component({
@@ -12,10 +13,12 @@ import { LoaderService } from '../global-loader/shared/loader.service';
 export class ExamsComponent implements OnInit, OnDestroy {
   private readonly unsubscriber$: Subject<void> = new Subject();
   examList: Array<IExam>;
+  user: IUser;
 
   constructor(
     private examService: ExamService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +33,9 @@ export class ExamsComponent implements OnInit, OnDestroy {
         (error) => console.log(error),
         () => this.loaderService.isShow.next(false)
       );
+    this.auth.user
+      .pipe(takeUntil(this.unsubscriber$))
+      .subscribe((user) => (this.user = user));
   }
 
   deleteExam(id: number) {

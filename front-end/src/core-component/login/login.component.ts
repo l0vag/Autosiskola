@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   submit() {
     if (this.profileForm.valid) {
       this.loaderService.isShow.next(true);
-      console.log(this.profileForm);
+
       let user = this.authService.login(
         this.profileForm.get('userName').value,
         this.profileForm.get('password').value

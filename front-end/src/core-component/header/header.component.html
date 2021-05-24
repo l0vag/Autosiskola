@@ -37,6 +37,9 @@
             >Bejelentkezek</a
           >
         </li>
+        <li *ngIf="isAuthenticated">
+          <a (click)="logout()">Kijelentkezek</a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -90,6 +93,9 @@
         (click)="toggleOpen()"
         >Bejelentkezek</a
       >
+    </li>
+    <li *ngIf="isAuthenticated">
+      <a (click)="logout()">Kijelentkezek</a>
     </li>
   </ul>
 </nav>
