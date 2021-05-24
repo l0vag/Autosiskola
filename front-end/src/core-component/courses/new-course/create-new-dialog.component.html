@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+
+<mat-dialog-content
+  [formGroup]="form"
+  style="display: flex; flex-wrap: wrap; width: min-content"
+>
+  <mat-form-field>
+    <input matInput placeholder="Kurzus címe" formControlName="title" />
+  </mat-form-field>
+  <div
+    *ngIf="title.invalid && (title.dirty || title.touched)"
+    class="alert alert-danger"
+  >
+    <div *ngIf="title.errors?.required">Cím megadása kötelező</div>
+  </div>
+  <mat-form-field>
+    <input matInput placeholder="Kezdete" formControlName="startDate" />
+  </mat-form-field>
+  <div
+    *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)"
+    class="alert alert-danger"
+  >
+    <div *ngIf="startDate.errors?.required">
+      Kezdő időpont megadása kötelező
+    </div>
+  </div>
+  <mat-form-field>
+    <input matInput placeholder="Vége" formControlName="finishDate" />
+  </mat-form-field>
+  <div
+    *ngIf="finishDate.invalid && (finishDate.dirty || finishDate.touched)"
+    class="alert alert-danger"
+  >
+    <div *ngIf="finishDate.errors?.required">
+      Záró időpont megadása kötelező
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions
+  style="align-items: center; display: flex; justify-content: space-evenly"
+>
+  <button class="mat-raised-button" (click)="close()">Bezárás</button>
+  <button class="mat-raised-button mat-primary" (click)="save()">Mentés</button>
+</mat-dialog-actions>

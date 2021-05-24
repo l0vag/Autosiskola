@@ -38,4 +38,13 @@ export class CoursesService {
   getById(id: number): ICourse {
     return this.courses.find((course) => course.id === id);
   }
+
+  addCourse(title: string, startDate: string, finishDate: string) {
+    this.courses.push({
+      id: this.courses.length,
+      title: title,
+      startDate: startDate,
+      finishDate: finishDate,
+    });
+  }
 }
