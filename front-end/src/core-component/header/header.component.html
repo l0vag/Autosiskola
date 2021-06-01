@@ -32,6 +32,11 @@
             >Felhasználók</a
           >
         </li>
+        <li *ngIf="isAuthenticated">
+          <a [routerLink]="['/apply']" routerLinkActive="active"
+            >Órára jelentkezek</a
+          >
+        </li>
         <li *ngIf="!isAuthenticated">
           <a [routerLink]="['/login']" routerLinkActive="active"
             >Bejelentkezek</a
@@ -84,6 +89,11 @@
         routerLinkActive="active"
         (click)="toggleOpen()"
         >Felhasználók</a
+      >
+    </li>
+    <li *ngIf="isAuthenticated">
+      <a [routerLink]="['/apply']" routerLinkActive="active"
+        >Órára jelentkezek</a
       >
     </li>
     <li *ngIf="!isAuthenticated">

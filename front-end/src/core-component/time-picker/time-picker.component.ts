@@ -15,7 +15,113 @@ interface workday {
   templateUrl: './time-picker.component.html',
 })
 export class TimePickerComponent implements OnInit {
-  dateTable: Array<workday>;
+  public dateTable: Array<workday> = [
+    {
+      name: 'hétfő',
+      classes: [
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+      ],
+    },
+    {
+      name: 'kedd',
+      classes: [
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: false,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+      ],
+    },
+    {
+      name: 'szerda',
+      classes: [
+        {
+          isFree: false,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+      ],
+    },
+    {
+      name: 'csütörtök',
+      classes: [
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: false,
+          student: null,
+        },
+      ],
+    },
+    {
+      name: 'péntek',
+      classes: [
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+        {
+          isFree: true,
+          student: null,
+        },
+      ],
+    },
+  ];
 
   constructor() {}
 

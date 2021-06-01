@@ -19,6 +19,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
 import { StudentComponent } from './student/student.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
+import { InstructorPickerComponent } from './instructor-picker/instructor-picker.component';
+import { ApplyOnCoursesComponent } from './apply-on-courses/apply-on-courses.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { TimePickerComponent } from './time-picker/time-picker.component';
     ProfileCardComponent,
     StudentComponent,
     TimePickerComponent,
+    InstructorPickerComponent,
+    ApplyOnCoursesComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterailModule],
   providers: [DatePipe],
