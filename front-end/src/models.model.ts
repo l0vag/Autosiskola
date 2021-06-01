@@ -10,13 +10,15 @@ export interface IUser {
 export interface IExam {
   id: number;
   title: string;
-  examDate: string;
+  examDate: Date;
+  users: Array<IUser>;
   results: Array<any>;
 }
 
 export interface ICourse {
   id: number;
   title: string;
-  startDate: string;
-  finishDate: string;
+  startDate: Date;
+  finishDate: Date;
+  users: Array<IUser>;
 }

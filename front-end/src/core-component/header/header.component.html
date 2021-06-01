@@ -27,7 +27,7 @@
         <li>
           <a [routerLink]="['/exams']" routerLinkActive="active">Vizsgák</a>
         </li>
-        <li>
+        <li *ngIf="isAuthenticated">
           <a [routerLink]="['/users']" routerLinkActive="active"
             >Felhasználók</a
           >
@@ -78,7 +78,7 @@
         >Vizsgák</a
       >
     </li>
-    <li>
+    <li *ngIf="isAuthenticated">
       <a
         [routerLink]="['/users']"
         routerLinkActive="active"

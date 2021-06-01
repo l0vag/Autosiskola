@@ -40,11 +40,24 @@
       alt="logo"
     />
     <mat-card-content>
-      <p>kezdete: {{ course.startDate }}</p>
-      <p>vége: {{ course.finishDate }}</p>
+      <p>kezdete: {{ course.startDate | date: "shortDate" }}</p>
+      <p>vége: {{ course.finishDate | date: "shortDate" }}</p>
+      <div
+        *ngIf="
+          (user && user.role === 'ROLE_INSTRUCTOR') ||
+          (user && user.role === 'ROLE_ADMIN')
+        "
+      >
+        tanulók:
+        <span *ngFor="let student of course.users">{{ student.name }}, </span>
+      </div>
     </mat-card-content>
     <mat-card-actions>
-      <button *ngIf="user && user.role === 'ROLE_STUDENT'" mat-raised-button>
+      <button
+        *ngIf="user && user.role === 'ROLE_STUDENT'"
+        mat-raised-button
+        (click)="addUserToCourse(course.id)"
+      >
         Jelentkezem
       </button>
     </mat-card-actions>

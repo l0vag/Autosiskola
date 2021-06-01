@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -18,6 +18,7 @@ import { CreateNewDialogComponent } from './courses/new-course/create-new-dialog
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
 import { StudentComponent } from './student/student.component';
+import { TimePickerComponent } from './time-picker/time-picker.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +37,10 @@ import { StudentComponent } from './student/student.component';
     ProfileComponent,
     ProfileCardComponent,
     StudentComponent,
+    TimePickerComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterailModule],
+  providers: [DatePipe],
   exports: [
     HeaderComponent,
     FooterComponent,

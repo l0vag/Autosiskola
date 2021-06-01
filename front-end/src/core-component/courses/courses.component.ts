@@ -70,4 +70,10 @@ export class CoursesComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscriber$))
       .subscribe((courses) => (this.courses = courses));
   }
+
+  addUserToCourse(id: number) {
+    if (this.user) {
+      this.coursesService.addUser(id, this.user);
+    }
+  }
 }

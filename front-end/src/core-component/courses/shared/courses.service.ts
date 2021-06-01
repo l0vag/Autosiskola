@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ICourse } from 'src/models.model';
+import { ICourse, IUser } from 'src/models.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,20 +13,23 @@ export class CoursesService {
       {
         id: 0,
         title: 'kresz',
-        startDate: '2021-05-30',
-        finishDate: '2021-06-30',
+        startDate: new Date('2021-05-30'),
+        finishDate: new Date('2021-06-30'),
+        users: [],
       },
       {
         id: 1,
         title: 'kresz',
-        startDate: '2021-06-15',
-        finishDate: '2021-06-30',
+        startDate: new Date('2021-06-15'),
+        finishDate: new Date('2021-06-30'),
+        users: [],
       },
       {
         id: 2,
         title: 'elsősegély',
-        startDate: '2021-06-20',
-        finishDate: '2021-06-30',
+        startDate: new Date('2021-06-20'),
+        finishDate: new Date('2021-06-30'),
+        users: [],
       },
     ];
   }
@@ -43,12 +46,21 @@ export class CoursesService {
     this.courses.push({
       id: this.courses.length,
       title: title,
-      startDate: startDate,
-      finishDate: finishDate,
+      startDate: new Date(startDate),
+      finishDate: new Date(finishDate),
+      users: [],
     });
+    console.log(this.courses);
   }
 
   deleteCourse(id: number) {
     this.courses = this.courses.filter((u) => u.id !== id);
+  }
+
+  addUser(id: number, user: IUser) {
+    let course = this.getById(id);
+    if (course) {
+      course.users.push(user);
+    }
   }
 }

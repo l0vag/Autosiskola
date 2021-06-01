@@ -36,7 +36,9 @@ export class CreateNewDialogComponent implements OnInit {
   }
 
   save() {
-    this.dialogRef.close(this.form.value);
+    if (this.form.valid) {
+      this.dialogRef.close(this.form.value);
+    }
   }
 
   close() {

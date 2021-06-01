@@ -17,7 +17,7 @@ export class UserService {
   ) {
     this.users = [
       {
-        id: 1,
+        id: 0,
         name: 'Pisti',
         password: 'százhét',
         role: 'ROLE_INSTRUCTOR',
@@ -25,7 +25,7 @@ export class UserService {
         courses: [],
       },
       {
-        id: 2,
+        id: 1,
         name: 'Béla',
         password: 'százhat',
         role: 'ROLE_INSTRUCTOR',
@@ -33,7 +33,7 @@ export class UserService {
         courses: [],
       },
       {
-        id: 3,
+        id: 2,
         name: 'Dalma',
         password: 'százhárom',
         role: 'ROLE_ADMIN',
@@ -41,7 +41,7 @@ export class UserService {
         courses: [],
       },
       {
-        id: 4,
+        id: 3,
         name: 'Géza',
         password: 'tréning',
         role: 'ROLE_STUDENT',
@@ -49,7 +49,7 @@ export class UserService {
         courses: [],
       },
       {
-        id: 5,
+        id: 4,
         name: 'Géza2',
         password: 'tréning2',
         role: 'ROLE_STUDENT',
@@ -57,7 +57,7 @@ export class UserService {
         courses: [],
       },
       {
-        id: 6,
+        id: 5,
         name: 'Géza3',
         password: 'tréning3',
         role: 'ROLE_STUDENT',
@@ -65,7 +65,7 @@ export class UserService {
         courses: [],
       },
       {
-        id: 7,
+        id: 6,
         name: 'Géza4',
         password: 'tréning4',
         role: 'ROLE_GUEST',
@@ -73,7 +73,7 @@ export class UserService {
         courses: [],
       },
       {
-        id: 8,
+        id: 7,
         name: 'Géza5',
         password: 'tréning5',
         role: 'ROLE_GUEST',
@@ -81,7 +81,7 @@ export class UserService {
         courses: [],
       },
       {
-        id: 9,
+        id: 8,
         name: 'guest',
         password: 'guest',
         role: 'ROLE_GUEST',
@@ -89,10 +89,18 @@ export class UserService {
         courses: [],
       },
       {
-        id: 10,
+        id: 9,
         name: 'admin',
         password: 'admin',
         role: 'ROLE_ADMIN',
+        results: [],
+        courses: [],
+      },
+      {
+        id: 9,
+        name: 'student',
+        password: 'student',
+        role: 'ROLE_STUDENT',
         results: [],
         courses: [],
       },

@@ -14,10 +14,15 @@
     <div *ngIf="title.errors?.required">Cím megadása kötelező</div>
   </div>
   <mat-form-field>
-    <input matInput placeholder="Kezdete" formControlName="startDate" />
+    <input
+      type="date"
+      matInput
+      placeholder="Kezdete"
+      formControlName="startDate"
+    />
   </mat-form-field>
   <div
-    *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)"
+    *ngIf="startDate.invalid && startDate.touched"
     class="alert alert-danger"
   >
     <div *ngIf="startDate.errors?.required">
@@ -25,10 +30,15 @@
     </div>
   </div>
   <mat-form-field>
-    <input matInput placeholder="Vége" formControlName="finishDate" />
+    <input
+      type="date"
+      matInput
+      placeholder="Vége"
+      formControlName="finishDate"
+    />
   </mat-form-field>
   <div
-    *ngIf="finishDate.invalid && (finishDate.dirty || finishDate.touched)"
+    *ngIf="finishDate.invalid && finishDate.touched"
     class="alert alert-danger"
   >
     <div *ngIf="finishDate.errors?.required">

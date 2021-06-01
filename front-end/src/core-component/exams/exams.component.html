@@ -4,7 +4,9 @@
   <mat-card class="custom-card" *ngFor="let exam of examList">
     <mat-card-header>
       <mat-card-title>{{ exam.title }}</mat-card-title>
-      <mat-card-subtitle>{{ exam.examDate }}</mat-card-subtitle>
+      <mat-card-subtitle>{{
+        exam.examDate | date: "short":""
+      }}</mat-card-subtitle>
       <button
         *ngIf="
           (user && user.role === 'ROLE_INSTRUCTOR') ||
