@@ -4,11 +4,13 @@
 @import "./assets/scss/footer.scss";
 @import "./assets/scss/home.scss";
 @import "./assets/scss/scroll-to-top.scss";
+@import "./assets/scss/time-picker.scss";
 
 html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;

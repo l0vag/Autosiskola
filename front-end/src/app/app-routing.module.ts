@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ApplyOnCoursesComponent } from 'src/core-component/apply-on-courses/apply-on-courses.component';
 import { CoursesComponent } from 'src/core-component/courses/courses.component';
 import { ExamsComponent } from 'src/core-component/exams/exams.component';
 import { HomeComponent } from 'src/core-component/home/home.component';
@@ -35,6 +36,11 @@ const routes: Routes = [
     },
   },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  {
+    path: 'apply',
+    component: ApplyOnCoursesComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];

@@ -1,0 +1,30 @@
+.time-picker__table {
+  display: flex;
+}
+
+.date {
+  width: 100px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date--title {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.date--free {
+  background-color: transparent;
+  // border: 2px solid #393e46;
+}
+
+.date--occupied {
+  background-color: #393e46;
+  border: 2px solid #393e46;
+  color: #fff;
+  cursor: not-allowed;
+}
