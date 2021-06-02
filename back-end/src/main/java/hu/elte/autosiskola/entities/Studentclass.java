@@ -30,8 +30,8 @@ public class Studentclass {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    @ManyToOne
-    @JoinColumn
-    private Exam exam;
+    @ManyToMany
+    @JsonIgnore
+    private List<User> users;
 
 }

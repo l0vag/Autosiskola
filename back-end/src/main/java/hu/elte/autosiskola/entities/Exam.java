@@ -29,9 +29,11 @@ public class Exam {
     @Temporal(TemporalType.DATE)
     private Date examDate;
 
+    /*
     @JsonIgnore
     @OneToMany(mappedBy = "exam" )
     private List<Studentclass> studentclasses;
+    */
 
     @JsonIgnore
     @ManyToMany

@@ -1,8 +1,11 @@
 package hu.elte.autosiskola.controllers;
 
 import hu.elte.autosiskola.entities.User;
+import hu.elte.autosiskola.helper.UserUpdateHolder;
 import hu.elte.autosiskola.repositories.ExamRepository;
 import hu.elte.autosiskola.repositories.UserRepository;
+import lombok.Getter;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +41,10 @@ public class UserController {
     public ResponseEntity<Iterable<User>> getAll() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         List<String> roles = auth.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
-//        if (roles.contains("ROLE_ADMIN")) {
+        if (roles.contains("ROLE_ADMIN")) {
             return ResponseEntity.ok(userRepository.findAll());
-  //      }
-    //    return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @PostMapping("/register")
@@ -76,4 +79,26 @@ public class UserController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<User> removeUser(@RequestBody User user) {
+        Optional<User> removeUser = userRepository.findByName(user.getName());
+        if (removeUser.isPresent()) {
+            userRepository.delete(user);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    @PatchMapping("/update")
+    public ResponseEntity<User> updateUser(@RequestBody UserUpdateHolder info) {
+        Optional<User> updateUser = userRepository.findByName(info.getUser().getName());
+        if (updateUser.isPresent()) {
+            userRepository.delete(info.getUser());
+            userRepository.save(info.getUpdatedUser());
+            return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
 }
