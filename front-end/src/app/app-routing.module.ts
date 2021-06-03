@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AccessDeniedComponent } from 'src/core-component/access-denied/access-denied.component';
 import { ApplyOnCoursesComponent } from 'src/core-component/apply-on-courses/apply-on-courses.component';
 import { CoursesComponent } from 'src/core-component/courses/courses.component';
 import { ExamsComponent } from 'src/core-component/exams/exams.component';
@@ -42,6 +43,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'access-denied', component: AccessDeniedComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

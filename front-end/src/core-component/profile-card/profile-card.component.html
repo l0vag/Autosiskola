@@ -1,27 +1,37 @@
-<div>
-  <div>
-    <strong> Név: </strong>
-    {{ person.name }}
-  </div>
-  <div>
-    <strong> Szerepkör: </strong>
-    {{ person.role }}
-  </div>
-  <div>
-    Jelszó:
-    {{ person.password }}
-  </div>
-  <div>
-    <strong> Kurzusok: </strong>
-    <div *ngFor="let course of person.courses">
-      Kurzus neve: {{ course.title }} Kezdete: {{ course.title }} Vége:
-      {{ course.title }}
-    </div>
-  </div>
-  <div>
-    <strong> Eredmények: </strong>
-    <div *ngFor="let result of person.results">
-      {{ result | json }}
-    </div>
-  </div>
-</div>
+<mat-card class="custom-card">
+  <mat-card-header>
+    <mat-card-title>{{ person.name }}</mat-card-title>
+    <mat-card-subtitle>password: {{ person.password }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    *ngIf="person.role == 'ROLE_STUDENT'"
+    mat-card-image
+    src="../../assets/images/avatar1.png"
+    alt="avatar"
+  />
+  <img
+    *ngIf="person.role == 'ROLE_GUEST'"
+    mat-card-image
+    src="../../assets/images/avatar2.png"
+    alt="avatar"
+  />
+  <img
+    *ngIf="person.role == 'ROLE_INSTRUCTOR'"
+    mat-card-image
+    src="../../assets/images/avatar3.png"
+    alt="avatar"
+  />
+  <img
+    *ngIf="person.role == 'ROLE_ADMIN'"
+    mat-card-image
+    src="../../assets/images/avatar4.png"
+    alt="avatar"
+  />
+  <mat-card-content>
+    <p>
+      The Shiba Inu is the smallest of the six original and distinct spitz
+      breeds of dog from Japan.
+    </p>
+    <p>{{ person.role }}</p>
+  </mat-card-content>
+</mat-card>

@@ -21,6 +21,8 @@ import { StudentComponent } from './student/student.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { InstructorPickerComponent } from './instructor-picker/instructor-picker.component';
 import { ApplyOnCoursesComponent } from './apply-on-courses/apply-on-courses.component';
+import { CreateNewExamComponent } from './exams/create-new-exam/create-new-exam.component';
+import { AccessDeniedComponent } from './access-denied/access-denied.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { ApplyOnCoursesComponent } from './apply-on-courses/apply-on-courses.com
     TimePickerComponent,
     InstructorPickerComponent,
     ApplyOnCoursesComponent,
+    CreateNewExamComponent,
+    AccessDeniedComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterailModule],
   providers: [DatePipe],

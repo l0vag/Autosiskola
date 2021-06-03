@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+
+<mat-dialog-content
+  [formGroup]="form"
+  style="display: flex; flex-wrap: wrap; width: min-content"
+>
+  <mat-form-field>
+    <input matInput placeholder="Vizsga típusa" formControlName="title" />
+  </mat-form-field>
+  <div
+    *ngIf="title.touched && title.hasError('required')"
+    class="alert alert-danger"
+  >
+    <div>Típus megadása kötelező</div>
+  </div>
+  <mat-form-field>
+    <input
+      type="date"
+      matInput
+      placeholder="Napja"
+      formControlName="examDate"
+    />
+  </mat-form-field>
+  <div
+    *ngIf="examDate.touched && examDate.hasError('required')"
+    class="alert alert-danger"
+  >
+    <div>Időpont megadása kötelező</div>
+  </div>
+  <mat-form-field>
+    <input
+      type="time"
+      matInput
+      placeholder="Ideje"
+      formControlName="examTime"
+    />
+  </mat-form-field>
+  <div
+    *ngIf="examDate.touched && examTime.hasError('required')"
+    class="alert alert-danger"
+  >
+    <div>Időpont megadása kötelező</div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions
+  style="align-items: center; display: flex; justify-content: space-evenly"
+>
+  <button class="mat-raised-button" (click)="close()">Bezárás</button>
+  <button class="mat-raised-button mat-primary" (click)="save()">Mentés</button>
+</mat-dialog-actions>

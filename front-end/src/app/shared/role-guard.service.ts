@@ -40,7 +40,7 @@ export class RoleGuardService implements CanActivate {
       !this.isAuthenticated ||
       0 > expectedRoles.findIndex((a) => a === this.user?.role)
     ) {
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/access-denied');
       return false;
     }
     return true;

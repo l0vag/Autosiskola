@@ -1,5 +1,15 @@
 <h1>Vizsgák</h1>
 
+<div
+  *ngIf="
+    (user && user.role === 'ROLE_INSTRUCTOR') ||
+    (user && user.role === 'ROLE_ADMIN')
+  "
+  class="admin-section"
+>
+  <button mat-raised-button (click)="openDialog()">Új vizsga</button>
+</div>
+
 <div class="centered flex-wrap-container" style="padding: 20px 0">
   <mat-card class="custom-card" *ngFor="let exam of examList">
     <mat-card-header>
@@ -30,9 +40,17 @@
         The Shiba Inu is the smallest of the six original and distinct spitz
         breeds of dog from Japan.
       </p>
+      <div>
+        Tanulók:
+        <span *ngFor="let student of exam.users">{{ student.name }}</span>
+      </div>
     </mat-card-content>
     <mat-card-actions>
-      <button *ngIf="user && user.role === 'ROLE_STUDENT'" mat-raised-button>
+      <button
+        *ngIf="user && user.role === 'ROLE_STUDENT'"
+        mat-raised-button
+        (click)="addUser(exam.id, user)"
+      >
         Jelentkezem
       </button>
     </mat-card-actions>
