@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ICourse, IUser } from 'src/models.model';
+import { courses } from './../../../data.mock';
 
 @Injectable({
   providedIn: 'root',
@@ -9,29 +10,7 @@ export class CoursesService {
   courses: ICourse[];
 
   constructor() {
-    this.courses = [
-      {
-        id: 0,
-        title: 'kresz',
-        startDate: new Date('2021-05-30'),
-        finishDate: new Date('2021-06-30'),
-        users: [],
-      },
-      {
-        id: 1,
-        title: 'kresz',
-        startDate: new Date('2021-06-15'),
-        finishDate: new Date('2021-06-30'),
-        users: [],
-      },
-      {
-        id: 2,
-        title: 'elsősegély',
-        startDate: new Date('2021-06-20'),
-        finishDate: new Date('2021-06-30'),
-        users: [],
-      },
-    ];
+    this.courses = courses;
   }
 
   getCourses(): Observable<ICourse[]> {

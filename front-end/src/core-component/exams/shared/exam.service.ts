@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DateHelperService } from 'src/helpers/date-helper.service';
 import { IExam, IUser } from 'src/models.model';
+import { exams } from './../../../data.mock';
 
 @Injectable({
   providedIn: 'root',
@@ -11,29 +12,7 @@ import { IExam, IUser } from 'src/models.model';
 export class ExamService {
   exams: Array<IExam>;
   constructor(private http: HttpClient, private dateHelper: DateHelperService) {
-    this.exams = [
-      {
-        id: 0,
-        title: 'forgalmi',
-        examDate: new Date('2021-10-11 14:00'),
-        results: [],
-        users: [],
-      },
-      {
-        id: 1,
-        title: 'forgalmi',
-        examDate: new Date('2021-12-11 10:00'),
-        results: [],
-        users: [],
-      },
-      {
-        id: 2,
-        title: 'kresz',
-        examDate: new Date('2021-06-13 14:00'),
-        results: [],
-        users: [],
-      },
-    ];
+    this.exams = exams;
   }
 
   getExams(): Observable<Array<IExam>> {

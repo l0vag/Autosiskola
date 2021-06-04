@@ -1,13 +1,43 @@
-<div style="display: flex">
-  <div *ngFor="let instructor of instructors">
-    <div class="instructor-card" (click)="emitSelectedUser(instructor)">
-      <img
-        src="../../assets/images/round_instr.png"
-        width="30"
-        height="30"
-        alt="instructor"
-      />
-      <span>{{ instructor.name }}</span>
+<div>
+  <div style="display: flex; justify-content: center">
+    <div *ngFor="let instructor of instructors">
+      <div
+        class="instructor-card"
+        [ngStyle]="{
+          'background-color':
+            instructor === selectedUser ? 'gray' : 'transparent'
+        }"
+        (click)="selectUser(instructor)"
+      >
+        <img
+          src="../../assets/images/round_instr.png"
+          width="30"
+          height="30"
+          alt="instructor"
+        />
+        <span>{{ instructor.name }}</span>
+      </div>
     </div>
+  </div>
+  <div
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
+    "
+  >
+    <div *ngIf="weeks">hét száma:</div>
+    <button
+      mat-raised-button
+      *ngFor="let week of weeks"
+      (click)="emitSelectedUser(week.number)"
+      style="margin: 0 20px"
+      [ngStyle]="{
+        border: selectedWeekNum === week.number ? '2px solid gray' : ''
+      }"
+    >
+      {{ week.number }}
+    </button>
   </div>
 </div>

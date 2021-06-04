@@ -1,4 +1,10 @@
 <app-instructor-picker
-  (selectUserEvent)="selected($event)"
+  (selectUserEvent)="weekSelected($event)"
 ></app-instructor-picker>
-<app-time-picker></app-time-picker>
+<app-time-picker
+  [workWeek]="workWeek?.workDays"
+  (classSelectedEvent)="onClassSelected($event)"
+></app-time-picker>
+<div *ngIf="!workWeek" style="text-align: center">
+  Válassz oktatót, és munkahetet.
+</div>
