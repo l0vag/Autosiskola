@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/auth.service';
 import { ExamService } from 'src/core-component/exams/shared/exam.service';
 import { IExam, IUser } from 'src/models.model';
-import { LoaderService } from '../global-loader/shared/loader.service';
+import { LoaderService } from '../shared/global-loader/shared/loader.service';
 import { CreateNewExamComponent } from './create-new-exam/create-new-exam.component';
 
 @Component({
@@ -53,9 +53,29 @@ export class ExamsComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(CreateNewExamComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((data) => {
-      console.log('Dialog output:', data);
       if (data) {
         this.examService.addExam(data.title, data.examDate, data.examTime);
+      }
+    });
+  }
+
+  modifyDialog(examId: number) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = true;
+    let exam = this.examService.getExamById(examId);
+
+    dialogConfig.data = {
+      title: 'Kurzus módosítása',
+      exam: exam,
+    };
+
+    const dialogRef = this.dialog.open(CreateNewExamComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        console.log('mod data: ', data);
+        this.examService.modifyExam(exam.id, data);
       }
     });
   }

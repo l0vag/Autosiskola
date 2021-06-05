@@ -7,7 +7,7 @@
   <mat-form-field>
     <mat-label>Vizsga típusa</mat-label>
     <mat-select formControlName="title">
-      <mat-option *ngFor="let type of examType | keyvalue" [value]="type.key">
+      <mat-option *ngFor="let type of examType | keyvalue" [value]="type.value">
         {{ type.value }}
       </mat-option>
     </mat-select>
@@ -45,6 +45,21 @@
     class="alert alert-danger"
   >
     <div>Időpont megadása kötelező</div>
+  </div>
+
+  <mat-form-field>
+    <input
+      type="number"
+      matInput
+      placeholder="Max létszám"
+      formControlName="maxNum"
+    />
+  </mat-form-field>
+  <div
+    *ngIf="maxNum.touched && maxNum.hasError('required')"
+    class="alert alert-danger"
+  >
+    <div>Maxlétszám megadása kötelező</div>
   </div>
 </mat-dialog-content>
 
