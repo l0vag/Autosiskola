@@ -42,14 +42,13 @@
     <mat-card-content>
       <p>kezdete: {{ course.startDate | date: "shortDate" }}</p>
       <p>vége: {{ course.finishDate | date: "shortDate" }}</p>
-      <!-- <div
+      <div
         *ngIf="
           (user && user.role === 'ROLE_INSTRUCTOR') ||
           (user && user.role === 'ROLE_ADMIN')
         "
-      > -->
-      <div>
-        tanulók:
+      >
+        Tanulók:
         <span *ngFor="let student of course.users">{{ student.name }}, </span>
       </div>
       <div>{{ course.users.length }} / {{ course.maxNum }}</div>
@@ -66,7 +65,7 @@
       <button
         *ngIf="user && user.role === ('ROLE_ADMIN' || 'ROLE_INSTRUCTOR')"
         mat-raised-button
-        (click)="createDialog(user.id)"
+        (click)="modifyDialog(course.id)"
       >
         <mat-icon aria-hidden="false" aria-label="Example home icon"
           >edit</mat-icon

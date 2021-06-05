@@ -24,6 +24,7 @@ import { ApplyOnCoursesComponent } from './apply-on-courses/apply-on-courses.com
 import { CreateNewExamComponent } from './exams/create-new-exam/create-new-exam.component';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
     CreateNewExamComponent,
     AccessDeniedComponent,
     EditUserComponent,
+    CalendarComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterailModule],
   providers: [DatePipe],

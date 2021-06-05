@@ -3,6 +3,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CourseType } from 'src/enums.enum';
+import { DateHelperService } from 'src/helpers/date-helper.service';
+import { ICourse } from 'src/models.model';
 
 @Component({
   selector: 'app-create-new-dialog',
@@ -13,6 +15,7 @@ export class CreateNewDialogComponent implements OnInit {
   courseType = CourseType;
 
   constructor(
+    private dateHelper: DateHelperService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data
@@ -44,6 +47,17 @@ export class CreateNewDialogComponent implements OnInit {
         [Validators.required, Validators.min(1), Validators.max(50)],
       ],
     });
+
+    if (this.data.course as ICourse) {
+      this.title.setValue(this.data.course.title);
+      this.maxNum.setValue(this.data.course.maxNum);
+      this.startDate.setValue(
+        this.dateHelper.getDateInitValue(this.data.course.startDate)
+      );
+      this.finishDate.setValue(
+        this.dateHelper.getDateInitValue(this.data.course.finishDate)
+      );
+    }
   }
 
   save() {

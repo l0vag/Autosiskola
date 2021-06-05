@@ -31,18 +31,37 @@
       </button>
     </mat-card-header>
     <img
+      *ngIf="exam.title === 'Forgalmi vizsga'"
       mat-card-image
-      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-      alt="Photo of a Shiba Inu"
+      src="./../../assets/images/forgalmi.jpeg"
+      alt="forgalmi"
+    />
+    <img
+      *ngIf="exam.title === 'Kresz vizsga'"
+      mat-card-image
+      src="./../../assets/images/kresz.jpeg"
+      alt="forgalmi"
     />
     <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz
-        breeds of dog from Japan.
+      <p *ngIf="exam.title === 'Forgalmi vizsga'">
+        A forgalmi vizsga kb. 40-50 percet vesz igénybe, azonban fontos, hogy a
+        vizsga kezdéi időpontja előtt legalább 20 perccel jelenjen meg a
+        vizsgázó a helyszínen. Személyazonosító okmány megléte feltétel!
       </p>
-      <div>
+      <p *ngIf="exam.title === 'Kresz vizsga'">
+        A kresz vizsga 55 percet vesz igénybe. A számítógépes teszten 55 kérdést
+        kap ahallgató (1 kérdés 1 perc), amiből 10 db 3 pontos, és 45 db 1
+        pontos. Sikeres vizsgához az elérhető 75-ből legalább 65 pontot kell
+        szerezni.
+      </p>
+      <div
+        *ngIf="
+          (user && user.role === 'ROLE_INSTRUCTOR') ||
+          (user && user.role === 'ROLE_ADMIN')
+        "
+      >
         Tanulók:
-        <span *ngFor="let student of exam.users">{{ student.name }}</span>
+        <span *ngFor="let student of exam.users">{{ student.name }}, </span>
       </div>
       <div>{{ exam.users.length }} / {{ exam.maxNum }}</div>
     </mat-card-content>

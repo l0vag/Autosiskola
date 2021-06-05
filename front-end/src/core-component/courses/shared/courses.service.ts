@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { DateHelperService } from 'src/helpers/date-helper.service';
 import { ICourse, IUser } from 'src/models.model';
 import { courses } from './../../../data.mock';
 
@@ -9,7 +10,7 @@ import { courses } from './../../../data.mock';
 export class CoursesService {
   courses: ICourse[];
 
-  constructor() {
+  constructor(private dateHelper: DateHelperService) {
     this.courses = courses;
   }
 
@@ -30,7 +31,20 @@ export class CoursesService {
       users: [],
       maxNum: maxNum,
     });
-    console.log(this.courses);
+  }
+
+  modifyCourse(courseId: number, courseData: any) {
+    let course = this.getById(courseId);
+    let newCourse: ICourse = {
+      id: courseId,
+      title: courseData.title,
+      startDate: new Date(courseData.startDate),
+      finishDate: new Date(courseData.finishDate),
+      users: course.users,
+      maxNum: courseData.maxNum,
+    };
+
+    Object.assign(course, newCourse);
   }
 
   deleteCourse(id: number) {

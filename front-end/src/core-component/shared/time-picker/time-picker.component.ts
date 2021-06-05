@@ -7,6 +7,7 @@ import { UserService } from '../../users/shared/user.service';
 })
 export class TimePickerComponent implements OnInit {
   @Input() workWeek;
+  @Input() instructor?;
   @Output() classSelectedEvent = new EventEmitter<any>();
 
   constructor() {}

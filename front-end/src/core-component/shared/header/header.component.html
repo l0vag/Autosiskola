@@ -21,6 +21,9 @@
             >Regisztrálok</a
           >
         </li>
+        <li *ngIf="isAuthenticated && authUser.role === roleType.INSTRUCTOR">
+          <a [routerLink]="['/calendar']" routerLinkActive="active">Naptár</a>
+        </li>
         <li>
           <a [routerLink]="['/courses']" routerLinkActive="active">Kurzusok</a>
         </li>
@@ -72,6 +75,14 @@
         >Regisztrálok</a
       >
     </li>
+    <li *ngIf="isAuthenticated && authUser.role === roleType.INSTRUCTOR">
+      <a
+        [routerLink]="['/calendar']"
+        (click)="toggleOpen()"
+        routerLinkActive="active"
+        >Naptár</a
+      >
+    </li>
     <li>
       <a
         [routerLink]="['/courses']"
@@ -102,7 +113,10 @@
         authUser.role === (roleType.STUDENT || roleType.ADMIN)
       "
     >
-      <a [routerLink]="['/apply']" routerLinkActive="active"
+      <a
+        [routerLink]="['/apply']"
+        (click)="toggleOpen()"
+        routerLinkActive="active"
         >Órára jelentkezek
       </a>
     </li>

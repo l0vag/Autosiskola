@@ -60,6 +60,27 @@ export class CoursesComponent implements OnInit, OnDestroy {
     });
   }
 
+  modifyDialog(courseId: number) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = true;
+    let course = this.coursesService.getById(courseId);
+
+    dialogConfig.data = {
+      title: 'Kurzus módosítása',
+      course: course,
+    };
+
+    const dialogRef = this.dialog.open(CreateNewDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        console.log('mod data: ', data);
+        this.coursesService.modifyCourse(course.id, data);
+      }
+    });
+  }
+
   ngOnDestroy(): void {
     this.unsubscriber$.next();
     this.unsubscriber$.complete();

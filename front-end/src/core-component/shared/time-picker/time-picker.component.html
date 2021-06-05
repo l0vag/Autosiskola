@@ -11,11 +11,21 @@
     </div>
     <div *ngFor="let class of day.classes">
       <div *ngIf="class.isFree" class="date date--free">
-        <button mat-raised-button (click)="apply(index, class.id)">
+        <button
+          *ngIf="!instructor"
+          mat-raised-button
+          (click)="apply(index, class.id)"
+        >
           jelentkezek
         </button>
+        <div *ngIf="instructor" class="date date--isFree">szabad</div>
       </div>
-      <div *ngIf="!class.isFree" class="date date--occupied">foglalt</div>
+      <div *ngIf="!class.isFree && !instructor" class="date date--occupied">
+        foglalt
+      </div>
+      <div *ngIf="!class.isFree && instructor" class="date date--student">
+        {{ class.student }}
+      </div>
     </div>
   </div>
 </div>

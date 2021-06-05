@@ -47,7 +47,7 @@ export class ExamsComponent implements OnInit, OnDestroy {
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      title: 'Új kurzus felvétele',
+      title: 'Új vizsga felvétele',
     };
 
     const dialogRef = this.dialog.open(CreateNewExamComponent, dialogConfig);
@@ -66,7 +66,7 @@ export class ExamsComponent implements OnInit, OnDestroy {
     let exam = this.examService.getExamById(examId);
 
     dialogConfig.data = {
-      title: 'Kurzus módosítása',
+      title: 'Vizsga módosítása',
       exam: exam,
     };
 
@@ -74,7 +74,6 @@ export class ExamsComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
-        console.log('mod data: ', data);
         this.examService.modifyExam(exam.id, data);
       }
     });
