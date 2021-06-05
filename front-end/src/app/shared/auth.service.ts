@@ -19,21 +19,21 @@ export class AuthService {
 
     this._user.next({
       // ADMIN
-      id: 9,
+      /* id: 9,
       name: 'admin',
       password: 'admin',
       role: 'ROLE_ADMIN',
       results: [],
       courses: [],
-      weeks: [],
+      weeks: [],*/
       // STUDENT
-      /* id: 9,
+      id: 9,
       name: 'student',
       password: 'student',
       role: 'ROLE_STUDENT',
       results: [],
       courses: [],
-      weeks: [],*/
+      weeks: [],
     });
 
     // TO THIS

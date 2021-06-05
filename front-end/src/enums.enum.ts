@@ -1,6 +1,6 @@
 export enum ExamType {
   DRIVING_TEST = 'Forgalmi vizsga',
-  ROAD_RULES_TEST = 'Kresz Vizsga',
+  ROAD_RULES_TEST = 'Kresz vizsga',
 }
 
 export enum CourseType {

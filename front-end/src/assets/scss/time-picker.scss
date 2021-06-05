@@ -19,7 +19,6 @@
 
 .date--free {
   background-color: transparent;
-  // border: 2px solid #393e46;
 }
 
 .date--occupied {
@@ -27,5 +26,18 @@
   border: 2px solid #393e46;
   color: #fff;
   cursor: not-allowed;
+  height: 35px;
+}
+
+.date--student {
+  border: 2px solid #393e46;
+  color: #393e46;
+  height: 35px;
+}
+
+.date--isFree {
+  background-color: #248118;
+  border: 2px solid #248118;
+  color: #fff;
   height: 35px;
 }
