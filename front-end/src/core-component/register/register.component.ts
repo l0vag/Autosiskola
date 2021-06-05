@@ -40,7 +40,6 @@ export class RegisterComponent implements OnInit {
     let pwd = this.profileForm.get('password').value;
     if (this.profileForm.valid) {
       this.loaderService.isShow.next(true);
-      console.log(this.profileForm);
       this.registerService
         .register({
           name: name,

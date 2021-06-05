@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IUser } from 'src/models.model';
 import { UserService } from '../users/shared/user.service';
-import { IUserWeek, IWorkWeek } from './../../models.model';
+import { IUserWeek } from './../../models.model';
 
 @Component({
   selector: 'app-instructor-picker',
@@ -18,7 +18,6 @@ export class InstructorPickerComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((data) => {
-      console.log(data);
       this.instructors = data.filter((selectedUser) => {
         return selectedUser.role === 'ROLE_INSTRUCTOR';
       });
@@ -32,7 +31,6 @@ export class InstructorPickerComponent implements OnInit {
     });
     this.selectedWeekNum = null;
     this.selectedUser = selectedUser;
-    console.log('selected selectedUser: ', selectedUser);
     this.weeks = this.userService.getUser(this.selectedUser.name).weeks;
   }
 

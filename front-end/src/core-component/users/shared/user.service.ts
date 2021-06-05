@@ -20,8 +20,9 @@ export class UserService {
   ) {
     this.users = users;
     let generatedWeek = this.weekCreator.generateCalendar();
-    this.users.forEach((user) => Object.assign(user.weeks, generatedWeek));
-    console.log('calendar: ', this.weekCreator.generateCalendar());
+    this.users.forEach((user) => {
+      user.weeks = JSON.parse(JSON.stringify(generatedWeek));
+    });
   }
 
   getUsers(): Observable<Array<IUser>> {
@@ -90,6 +91,5 @@ export class UserService {
 
     driverClass.isFree = false;
     driverClass.student = student?.name;
-    console.log('users: ', this.users);
   }
 }

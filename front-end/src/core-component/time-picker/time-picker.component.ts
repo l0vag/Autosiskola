@@ -14,7 +14,6 @@ export class TimePickerComponent implements OnInit {
   ngOnInit(): void {}
 
   apply(dayNum: number, classNum: number) {
-    console.log('dayId && classNum: ', dayNum, classNum);
     this.classSelectedEvent.emit({ dayNum, classNum });
   }
 }

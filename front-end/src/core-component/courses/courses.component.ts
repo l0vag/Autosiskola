@@ -46,7 +46,6 @@ export class CoursesComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(CreateNewDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((data) => {
-      console.log('Dialog output:', data);
       if (data) {
         this.coursesService.addCourse(
           data.title,
