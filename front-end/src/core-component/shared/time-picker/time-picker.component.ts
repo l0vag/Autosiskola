@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UserService } from '../users/shared/user.service';
+import { UserService } from '../../users/shared/user.service';
 
 @Component({
   selector: 'app-time-picker',

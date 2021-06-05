@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
@@ -18,7 +18,7 @@ import { CreateNewDialogComponent } from './courses/new-course/create-new-dialog
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileCardComponent } from './shared/profile-card/profile-card.component';
 import { StudentComponent } from './student/student.component';
-import { TimePickerComponent } from './time-picker/time-picker.component';
+import { TimePickerComponent } from './shared/time-picker/time-picker.component';
 import { InstructorPickerComponent } from './shared/instructor-picker/instructor-picker.component';
 import { ApplyOnCoursesComponent } from './apply-on-courses/apply-on-courses.component';
 import { CreateNewExamComponent } from './exams/create-new-exam/create-new-exam.component';
