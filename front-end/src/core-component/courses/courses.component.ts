@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/auth.service';
+import { CourseType } from 'src/enums.enum';
 import { ICourse, IUser } from 'src/models.model';
 import { CreateNewDialogComponent } from './new-course/create-new-dialog.component';
 import { CoursesService } from './shared/courses.service';
@@ -16,6 +17,8 @@ export class CoursesComponent implements OnInit, OnDestroy {
   courses: ICourse[];
   sub: Subscription;
   user: IUser;
+
+  courseType = CourseType;
 
   constructor(
     private coursesService: CoursesService,

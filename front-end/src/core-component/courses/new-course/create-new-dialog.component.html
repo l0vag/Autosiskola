@@ -5,7 +5,12 @@
   style="display: flex; flex-wrap: wrap; width: min-content"
 >
   <mat-form-field>
-    <input matInput placeholder="Kurzus címe" formControlName="title" />
+    <mat-label>Kurzus címe</mat-label>
+    <mat-select formControlName="title">
+      <mat-option *ngFor="let type of courseType | keyvalue" [value]="type.key">
+        {{ type.value }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <div
     *ngIf="title.invalid && (title.dirty || title.touched)"

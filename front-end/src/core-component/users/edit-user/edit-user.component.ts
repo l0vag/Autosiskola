@@ -1,15 +1,17 @@
+import { KeyValuePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CourseType } from 'src/enums.enum';
+import { RoleType } from 'src/enums.enum';
 
 @Component({
-  selector: 'app-create-new-dialog',
-  templateUrl: './create-new-dialog.component.html',
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.scss'],
 })
-export class CreateNewDialogComponent implements OnInit {
+export class EditUserComponent implements OnInit {
   form: FormGroup;
-  courseType = CourseType;
+  roleType = RoleType;
 
   constructor(
     private fb: FormBuilder,
@@ -17,23 +19,18 @@ export class CreateNewDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data
   ) {}
 
-  get title() {
-    return this.form.get('title');
+  get name() {
+    return this.form.get('name');
   }
 
-  get startDate() {
-    return this.form.get('title');
+  get role() {
+    return this.form.get('role');
   }
 
-  get finishDate() {
-    return this.form.get('title');
-  }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = this.fb.group({
-      title: ['', [Validators.required]],
-      startDate: ['', [Validators.required]],
-      finishDate: ['', [Validators.required]],
+      name: [this.data.user.name, [Validators.required]],
+      role: [this.data.user.role, [Validators.required]],
     });
   }
 

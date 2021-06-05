@@ -28,13 +28,13 @@
       </button>
     </mat-card-header>
     <img
-      *ngIf="course.title === 'kresz'"
+      *ngIf="course.title === courseType.ROAD_RULES_COURSE"
       mat-card-image
       src="../../assets/images/kresz.png"
       alt="logo"
     />
     <img
-      *ngIf="course.title === 'elsősegély'"
+      *ngIf="course.title === courseType.FIRST_AID_COURSE"
       mat-card-image
       src="../../assets/images/elsosegely.jpeg"
       alt="logo"

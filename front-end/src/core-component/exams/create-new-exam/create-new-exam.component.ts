@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ExamType } from 'src/enums.enum';
 
 @Component({
   selector: 'app-create-new-exam',
@@ -8,6 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class CreateNewExamComponent implements OnInit {
   form: FormGroup;
+  examType = ExamType;
 
   constructor(
     private fb: FormBuilder,

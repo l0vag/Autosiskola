@@ -5,7 +5,12 @@
   style="display: flex; flex-wrap: wrap; width: min-content"
 >
   <mat-form-field>
-    <input matInput placeholder="Vizsga típusa" formControlName="title" />
+    <mat-label>Vizsga típusa</mat-label>
+    <mat-select formControlName="title">
+      <mat-option *ngFor="let type of examType | keyvalue" [value]="type.key">
+        {{ type.value }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
   <div
     *ngIf="title.touched && title.hasError('required')"

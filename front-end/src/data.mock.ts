@@ -1,3 +1,4 @@
+import { CourseType, ExamType } from './enums.enum';
 import { IUser } from './models.model';
 
 export const users: IUser[] = [
@@ -233,21 +234,21 @@ export const freeWorkWeek = [
 export const courses = [
   {
     id: 0,
-    title: 'kresz',
+    title: CourseType.ROAD_RULES_COURSE,
     startDate: new Date('2021-05-30'),
     finishDate: new Date('2021-06-30'),
     users: [],
   },
   {
     id: 1,
-    title: 'kresz',
+    title: CourseType.ROAD_RULES_COURSE,
     startDate: new Date('2021-06-15'),
     finishDate: new Date('2021-06-30'),
     users: [],
   },
   {
     id: 2,
-    title: 'elsősegély',
+    title: CourseType.FIRST_AID_COURSE,
     startDate: new Date('2021-06-20'),
     finishDate: new Date('2021-06-30'),
     users: [],
@@ -257,21 +258,21 @@ export const courses = [
 export const exams = [
   {
     id: 0,
-    title: 'forgalmi',
+    title: ExamType.DRIVING_TEST,
     examDate: new Date('2021-10-11 14:00'),
     results: [],
     users: [],
   },
   {
     id: 1,
-    title: 'forgalmi',
+    title: ExamType.DRIVING_TEST,
     examDate: new Date('2021-12-11 10:00'),
     results: [],
     users: [],
   },
   {
     id: 2,
-    title: 'kresz',
+    title: ExamType.ROAD_RULES_TEST,
     examDate: new Date('2021-06-13 14:00'),
     results: [],
     users: [],

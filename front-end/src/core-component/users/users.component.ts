@@ -4,6 +4,8 @@ import { UserService } from 'src/core-component/users/shared/user.service';
 import { LoaderService } from '../global-loader/shared/loader.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @Component({
   selector: 'app-users',
@@ -12,10 +14,12 @@ import { takeUntil } from 'rxjs/operators';
 export class UsersComponent implements OnInit {
   private readonly unsubscriber$: Subject<void> = new Subject();
   userList: Array<IUser>;
+  modUser: IUser;
 
   constructor(
     private userService: UserService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +53,38 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers().subscribe((data) => {
       this.userList = data;
     });
+  }
+
+  createDialog(userId: number) {
+    let user = this.userService.getById(userId);
+    console.log('USER: ', user);
+    if (user) {
+      this.modUser = user;
+      this.openDialog();
+    }
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      title: this.modUser.name + ' adatainak módosítása',
+      user: this.modUser,
+    };
+
+    const dialogRef = this.dialog.open(EditUserComponent, dialogConfig);
+
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.unsubscriber$))
+      .subscribe((data) => {
+        console.log('Dialog output:', data);
+        if (data) {
+          // this.userService.modifyUser(id,);
+        }
+      });
   }
 
   ngOnDestroy(): void {

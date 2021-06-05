@@ -23,6 +23,7 @@ import { InstructorPickerComponent } from './instructor-picker/instructor-picker
 import { ApplyOnCoursesComponent } from './apply-on-courses/apply-on-courses.component';
 import { CreateNewExamComponent } from './exams/create-new-exam/create-new-exam.component';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
     ApplyOnCoursesComponent,
     CreateNewExamComponent,
     AccessDeniedComponent,
+    EditUserComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule, MaterailModule],
   providers: [DatePipe],

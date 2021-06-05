@@ -71,6 +71,11 @@ export class UserService {
     }
   }
 
+  modifyUser(userId: number, newData: IUser) {
+    let user = this.getById(userId);
+    user = newData;
+  }
+
   occupieClass(
     instructor: IUser,
     student: IUser,
@@ -87,7 +92,7 @@ export class UserService {
       return driverClass.id === classNum;
     });
 
-    console.log(ins, workWeek, workDay, driverClass, student);
+    // console.log(ins, workWeek, workDay, driverClass, student);
 
     driverClass.isFree = false;
     driverClass.student = student?.name;
