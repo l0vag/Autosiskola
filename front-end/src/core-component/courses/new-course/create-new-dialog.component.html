@@ -7,7 +7,10 @@
   <mat-form-field>
     <mat-label>Kurzus címe</mat-label>
     <mat-select formControlName="title">
-      <mat-option *ngFor="let type of courseType | keyvalue" [value]="type.key">
+      <mat-option
+        *ngFor="let type of courseType | keyvalue"
+        [value]="type.value"
+      >
         {{ type.value }}
       </mat-option>
     </mat-select>
@@ -49,6 +52,20 @@
     <div *ngIf="finishDate.errors?.required">
       Záró időpont megadása kötelező
     </div>
+  </div>
+  <mat-form-field>
+    <input
+      type="number"
+      matInput
+      placeholder="Max létszám"
+      formControlName="maxNum"
+    />
+  </mat-form-field>
+  <div
+    *ngIf="maxNum.touched && maxNum.hasError('required')"
+    class="alert alert-danger"
+  >
+    <div>Maxlétszám megadása kötelező</div>
   </div>
 </mat-dialog-content>
 

@@ -32,7 +32,12 @@
             >Felhasználók</a
           >
         </li>
-        <li *ngIf="isAuthenticated">
+        <li
+          *ngIf="
+            isAuthenticated &&
+            authUser.role === (roleType.STUDENT || roleType.ADMIN)
+          "
+        >
           <a [routerLink]="['/apply']" routerLinkActive="active"
             >Órára jelentkezek</a
           >
@@ -91,10 +96,15 @@
         >Felhasználók</a
       >
     </li>
-    <li *ngIf="isAuthenticated">
+    <li
+      *ngIf="
+        isAuthenticated &&
+        authUser.role === (roleType.STUDENT || roleType.ADMIN)
+      "
+    >
       <a [routerLink]="['/apply']" routerLinkActive="active"
-        >Órára jelentkezek</a
-      >
+        >Órára jelentkezek
+      </a>
     </li>
     <li *ngIf="!isAuthenticated">
       <a

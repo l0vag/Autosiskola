@@ -21,13 +21,14 @@ export class CoursesService {
     return this.courses.find((course) => course.id === id);
   }
 
-  addCourse(title: string, startDate: string, finishDate: string) {
+  addCourse(title: string, startDate: string, finishDate: string, maxNum) {
     this.courses.push({
       id: this.courses.length,
       title: title,
       startDate: new Date(startDate),
       finishDate: new Date(finishDate),
       users: [],
+      maxNum: maxNum,
     });
     console.log(this.courses);
   }
@@ -38,7 +39,13 @@ export class CoursesService {
 
   addUser(id: number, user: IUser) {
     let course = this.getById(id);
-    if (course) {
+    if (
+      0 >
+        course.users.findIndex((u) => {
+          return u === user;
+        }) &&
+      course.users.length < course.maxNum
+    ) {
       course.users.push(user);
     }
   }

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { IUser } from 'src/models.model';
-import { UserService } from '../users/shared/user.service';
-import { IUserWeek } from './../../models.model';
+import { UserService } from '../../users/shared/user.service';
+import { IUserWeek } from '../../../models.model';
 
 @Component({
   selector: 'app-instructor-picker',

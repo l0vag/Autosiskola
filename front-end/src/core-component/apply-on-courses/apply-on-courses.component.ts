@@ -6,7 +6,6 @@ import { IUser, IUserWeek } from './../../models.model';
 @Component({
   selector: 'app-apply-on-courses',
   templateUrl: './apply-on-courses.component.html',
-  styleUrls: ['./apply-on-courses.component.scss'],
 })
 export class ApplyOnCoursesComponent implements OnInit {
   public workWeek;

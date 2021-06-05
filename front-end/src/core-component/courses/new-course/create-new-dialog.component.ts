@@ -1,3 +1,4 @@
+import { visitAll } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -22,11 +23,15 @@ export class CreateNewDialogComponent implements OnInit {
   }
 
   get startDate() {
-    return this.form.get('title');
+    return this.form.get('startDate');
   }
 
   get finishDate() {
-    return this.form.get('title');
+    return this.form.get('finishDate');
+  }
+
+  get maxNum() {
+    return this.form.get('maxNum');
   }
 
   ngOnInit() {
@@ -34,6 +39,10 @@ export class CreateNewDialogComponent implements OnInit {
       title: ['', [Validators.required]],
       startDate: ['', [Validators.required]],
       finishDate: ['', [Validators.required]],
+      maxNum: [
+        10,
+        [Validators.required, Validators.min(1), Validators.max(50)],
+      ],
     });
   }
 

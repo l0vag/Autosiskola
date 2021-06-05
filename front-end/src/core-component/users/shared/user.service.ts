@@ -92,8 +92,6 @@ export class UserService {
       return driverClass.id === classNum;
     });
 
-    // console.log(ins, workWeek, workDay, driverClass, student);
-
     driverClass.isFree = false;
     driverClass.student = student?.name;
   }

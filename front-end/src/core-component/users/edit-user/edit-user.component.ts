@@ -35,8 +35,9 @@ export class EditUserComponent implements OnInit {
   }
 
   save() {
+    let message = { id: this.data.user.id, formData: this.form.value };
     if (this.form.valid) {
-      this.dialogRef.close(this.form.value);
+      this.dialogRef.close(message);
     }
   }
 

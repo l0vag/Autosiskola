@@ -14,6 +14,7 @@ export interface IExam {
   examDate: Date;
   users: Array<IUser>;
   results: Array<any>;
+  maxNum: number;
 }
 
 export interface ICourse {
@@ -22,6 +23,7 @@ export interface ICourse {
   startDate: Date;
   finishDate: Date;
   users: Array<IUser>;
+  maxNum: number;
 }
 
 export interface IDriveClass {

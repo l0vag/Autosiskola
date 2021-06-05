@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/models.model';
 import { UserService } from 'src/core-component/users/shared/user.service';
-import { LoaderService } from '../global-loader/shared/loader.service';
+import { LoaderService } from '../shared/global-loader/shared/loader.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -81,8 +81,10 @@ export class UsersComponent implements OnInit {
       .pipe(takeUntil(this.unsubscriber$))
       .subscribe((data) => {
         console.log('Dialog output:', data);
-        if (data) {
-          // this.userService.modifyUser(id,);
+        let user = this.userService.getById(data.id);
+        if (user) {
+          user.name = data.formData.name;
+          user.role = data.formData.role;
         }
       });
   }

@@ -25,7 +25,7 @@ const routes: Routes = [
     component: StudentComponent,
     canActivate: [RoleGuard],
     data: {
-      expectedRoles: ['ROLE_ADMIN', 'ROLE_INSTUCTOR'],
+      expectedRoles: ['ROLE_ADMIN', 'ROLE_INSTRUCTOR'],
     },
   },
   {
@@ -33,14 +33,17 @@ const routes: Routes = [
     component: UsersComponent,
     canActivate: [RoleGuard],
     data: {
-      expectedRoles: ['ROLE_ADMIN', 'ROLE_INSTUCTOR'],
+      expectedRoles: ['ROLE_ADMIN', 'ROLE_INSTRUCTOR'],
     },
   },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   {
     path: 'apply',
     component: ApplyOnCoursesComponent,
-    canActivate: [AuthGuard],
+    canActivate: [RoleGuard],
+    data: {
+      expectedRoles: ['ROLE_ADMIN', 'ROLE_STUDENT'],
+    },
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'access-denied', component: AccessDeniedComponent },

@@ -16,7 +16,9 @@ export class AuthService {
   constructor(private userService: UserService) {
     // DELETE
     this._isAuthenticated.next(true);
+
     this._user.next({
+      // ADMIN
       id: 9,
       name: 'admin',
       password: 'admin',
@@ -24,7 +26,16 @@ export class AuthService {
       results: [],
       courses: [],
       weeks: [],
+      // STUDENT
+      /* id: 9,
+      name: 'student',
+      password: 'student',
+      role: 'ROLE_STUDENT',
+      results: [],
+      courses: [],
+      weeks: [],*/
     });
+
     // TO THIS
   }
 

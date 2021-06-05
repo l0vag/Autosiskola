@@ -53,7 +53,8 @@ export class CoursesComponent implements OnInit, OnDestroy {
         this.coursesService.addCourse(
           data.title,
           data.startDate,
-          data.finishDate
+          data.finishDate,
+          data.maxNum
         );
       }
     });

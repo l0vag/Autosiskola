@@ -238,6 +238,7 @@ export const courses = [
     startDate: new Date('2021-05-30'),
     finishDate: new Date('2021-06-30'),
     users: [],
+    maxNum: 1,
   },
   {
     id: 1,
@@ -245,6 +246,7 @@ export const courses = [
     startDate: new Date('2021-06-15'),
     finishDate: new Date('2021-06-30'),
     users: [],
+    maxNum: 10,
   },
   {
     id: 2,
@@ -252,6 +254,7 @@ export const courses = [
     startDate: new Date('2021-06-20'),
     finishDate: new Date('2021-06-30'),
     users: [],
+    maxNum: 10,
   },
 ];
 
@@ -262,6 +265,7 @@ export const exams = [
     examDate: new Date('2021-10-11 14:00'),
     results: [],
     users: [],
+    maxNum: 1,
   },
   {
     id: 1,
@@ -269,6 +273,7 @@ export const exams = [
     examDate: new Date('2021-12-11 10:00'),
     results: [],
     users: [],
+    maxNum: 10,
   },
   {
     id: 2,
@@ -276,5 +281,6 @@ export const exams = [
     examDate: new Date('2021-06-13 14:00'),
     results: [],
     users: [],
+    maxNum: 10,
   },
 ];
