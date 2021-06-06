@@ -42,6 +42,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Examresult> results;
 
+    @OneToMany(mappedBy = "user")
+    private List<Calendar> calendar;
+
     @JsonIgnore
     @ManyToMany
     private List<Studentclass> studentclasses;
