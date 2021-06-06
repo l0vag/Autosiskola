@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/auth.service';
-import { LoaderService } from '../global-loader/shared/loader.service';
+import { LoaderService } from '../shared/global-loader/shared/loader.service';
 import { RegisterService } from './shared/register.service';
 
 @Component({
@@ -40,7 +40,6 @@ export class RegisterComponent implements OnInit {
     let pwd = this.profileForm.get('password').value;
     if (this.profileForm.valid) {
       this.loaderService.isShow.next(true);
-      console.log(this.profileForm);
       this.registerService
         .register({
           name: name,

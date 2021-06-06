@@ -1,5 +1,15 @@
 <h1>Vizsgák</h1>
 
+<div
+  *ngIf="
+    (user && user.role === 'ROLE_INSTRUCTOR') ||
+    (user && user.role === 'ROLE_ADMIN')
+  "
+  class="admin-section"
+>
+  <button mat-raised-button (click)="openDialog()">Új vizsga</button>
+</div>
+
 <div class="centered flex-wrap-container" style="padding: 20px 0">
   <mat-card class="custom-card" *ngFor="let exam of examList">
     <mat-card-header>
@@ -21,19 +31,57 @@
       </button>
     </mat-card-header>
     <img
+      *ngIf="exam.title === 'Forgalmi vizsga'"
       mat-card-image
-      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-      alt="Photo of a Shiba Inu"
+      src="./../../assets/images/forgalmi.jpeg"
+      alt="forgalmi"
+    />
+    <img
+      *ngIf="exam.title === 'Kresz vizsga'"
+      mat-card-image
+      src="./../../assets/images/kresz.jpeg"
+      alt="forgalmi"
     />
     <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz
-        breeds of dog from Japan.
+      <p *ngIf="exam.title === 'Forgalmi vizsga'">
+        A forgalmi vizsga kb. 40-50 percet vesz igénybe, azonban fontos, hogy a
+        vizsga kezdéi időpontja előtt legalább 20 perccel jelenjen meg a
+        vizsgázó a helyszínen. Személyazonosító okmány megléte feltétel!
       </p>
+      <p *ngIf="exam.title === 'Kresz vizsga'">
+        A kresz vizsga 55 percet vesz igénybe. A számítógépes teszten 55 kérdést
+        kap ahallgató (1 kérdés 1 perc), amiből 10 db 3 pontos, és 45 db 1
+        pontos. Sikeres vizsgához az elérhető 75-ből legalább 65 pontot kell
+        szerezni.
+      </p>
+      <div
+        *ngIf="
+          (user && user.role === 'ROLE_INSTRUCTOR') ||
+          (user && user.role === 'ROLE_ADMIN')
+        "
+      >
+        Tanulók:
+        <span *ngFor="let student of exam.users">{{ student.name }}, </span>
+      </div>
+      <div>{{ exam.users.length }} / {{ exam.maxNum }}</div>
     </mat-card-content>
     <mat-card-actions>
-      <button *ngIf="user && user.role === 'ROLE_STUDENT'" mat-raised-button>
+      <button
+        *ngIf="user && user.role === 'ROLE_STUDENT'"
+        mat-raised-button
+        (click)="addUser(exam.id, user)"
+        [disabled]="exam.maxNum <= exam.users.length"
+      >
         Jelentkezem
+      </button>
+      <button
+        *ngIf="user && user.role === ('ROLE_ADMIN' || 'ROLE_INSTRUCTOR')"
+        mat-raised-button
+        (click)="modifyDialog(exam.id)"
+      >
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >edit</mat-icon
+        >
       </button>
     </mat-card-actions>
   </mat-card>

@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/auth.service';
+import { RoleType } from 'src/enums.enum';
+import { IUser } from 'src/models.model';
 
 @Component({
   selector: 'app-header',
@@ -12,15 +14,16 @@ export class HeaderComponent implements OnInit {
   private readonly unsubscriber$: Subject<void> = new Subject();
   isOpen: boolean;
   isAuthenticated: boolean;
+  authUser: IUser;
+  roleType = RoleType;
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private auth: AuthService
-  ) {
+  constructor(private router: Router, private auth: AuthService) {
     this.auth.isAuthenticated
       .pipe(takeUntil(this.unsubscriber$))
       .subscribe((isAuth) => (this.isAuthenticated = isAuth));
+    this.auth.user
+      .pipe(takeUntil(this.unsubscriber$))
+      .subscribe((user) => (this.authUser = user));
   }
 
   ngOnInit(): void {}

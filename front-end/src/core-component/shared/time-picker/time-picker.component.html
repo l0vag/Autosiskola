@@ -1,0 +1,31 @@
+<div *ngIf="workWeek" class="time-picker__table">
+  <div style="margin-top: 20px">
+    <div class="date date--title">8:00 - 9:45</div>
+    <div class="date date--title">10:00 - 11:45</div>
+    <div class="date date--title">12:00 - 13:45</div>
+    <div class="date date--title">14:00 - 15:45</div>
+  </div>
+  <div *ngFor="let day of workWeek; let index = index">
+    <div class="date--title">
+      {{ day.name }}
+    </div>
+    <div *ngFor="let class of day.classes">
+      <div *ngIf="class.isFree" class="date date--free">
+        <button
+          *ngIf="!instructor"
+          mat-raised-button
+          (click)="apply(index, class.id)"
+        >
+          jelentkezek
+        </button>
+        <div *ngIf="instructor" class="date date--isFree">szabad</div>
+      </div>
+      <div *ngIf="!class.isFree && !instructor" class="date date--occupied">
+        foglalt
+      </div>
+      <div *ngIf="!class.isFree && instructor" class="date date--student">
+        {{ class.student }}
+      </div>
+    </div>
+  </div>
+</div>

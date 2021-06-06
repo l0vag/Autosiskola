@@ -28,6 +28,10 @@ body {
   max-width: 1240px;
 }
 
+form {
+  text-align: center;
+}
+
 #footer {
   flex-shrink: 0;
 }
@@ -60,12 +64,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: center;
+  align-items: stretch;
 }
 
 .custom-card {
-  max-width: 300px;
-  min-width: 230px;
+  width: 230px;
   margin: 0 10px 20px;
   text-align: left;
 }

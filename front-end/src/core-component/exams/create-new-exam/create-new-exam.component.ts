@@ -1,18 +1,17 @@
-import { visitAll } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CourseType } from 'src/enums.enum';
+import { ExamType } from 'src/enums.enum';
 import { DateHelperService } from 'src/helpers/date-helper.service';
-import { ICourse } from 'src/models.model';
+import { IExam } from 'src/models.model';
 
 @Component({
-  selector: 'app-create-new-dialog',
-  templateUrl: './create-new-dialog.component.html',
+  selector: 'app-create-new-exam',
+  templateUrl: './create-new-exam.component.html',
 })
-export class CreateNewDialogComponent implements OnInit {
+export class CreateNewExamComponent implements OnInit {
   form: FormGroup;
-  courseType = CourseType;
+  examType = ExamType;
 
   constructor(
     private dateHelper: DateHelperService,
@@ -25,12 +24,12 @@ export class CreateNewDialogComponent implements OnInit {
     return this.form.get('title');
   }
 
-  get startDate() {
-    return this.form.get('startDate');
+  get examDate() {
+    return this.form.get('examDate');
   }
 
-  get finishDate() {
-    return this.form.get('finishDate');
+  get examTime() {
+    return this.form.get('examTime');
   }
 
   get maxNum() {
@@ -40,22 +39,22 @@ export class CreateNewDialogComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       title: ['', [Validators.required]],
-      startDate: ['', [Validators.required]],
-      finishDate: ['', [Validators.required]],
+      examDate: ['', [Validators.required]],
+      examTime: ['', Validators.required],
       maxNum: [
         10,
         [Validators.required, Validators.min(1), Validators.max(50)],
       ],
     });
-
-    if (this.data.course as ICourse) {
-      this.title.setValue(this.data.course.title);
-      this.maxNum.setValue(this.data.course.maxNum);
-      this.startDate.setValue(
-        this.dateHelper.getDateInitValue(this.data.course.startDate)
+    if (this.data.exam as IExam) {
+      console.log('EXAM: ', this.data.exam);
+      this.title.setValue(this.data.exam.title);
+      this.maxNum.setValue(this.data.exam.maxNum);
+      this.examDate.setValue(
+        this.dateHelper.getDateInitValue(this.data.exam.examDate)
       );
-      this.finishDate.setValue(
-        this.dateHelper.getDateInitValue(this.data.course.finishDate)
+      this.examTime.setValue(
+        this.dateHelper.getTimeInitValue(this.data.exam.examDate)
       );
     }
   }

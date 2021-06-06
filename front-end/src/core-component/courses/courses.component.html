@@ -28,13 +28,13 @@
       </button>
     </mat-card-header>
     <img
-      *ngIf="course.title === 'kresz'"
+      *ngIf="course.title === courseType.ROAD_RULES_COURSE"
       mat-card-image
       src="../../assets/images/kresz.png"
       alt="logo"
     />
     <img
-      *ngIf="course.title === 'elsősegély'"
+      *ngIf="course.title === courseType.FIRST_AID_COURSE"
       mat-card-image
       src="../../assets/images/elsosegely.jpeg"
       alt="logo"
@@ -48,17 +48,28 @@
           (user && user.role === 'ROLE_ADMIN')
         "
       >
-        tanulók:
+        Tanulók:
         <span *ngFor="let student of course.users">{{ student.name }}, </span>
       </div>
+      <div>{{ course.users.length }} / {{ course.maxNum }}</div>
     </mat-card-content>
     <mat-card-actions>
       <button
         *ngIf="user && user.role === 'ROLE_STUDENT'"
         mat-raised-button
         (click)="addUserToCourse(course.id)"
+        [disabled]="course.maxNum <= course.users.length"
       >
         Jelentkezem
+      </button>
+      <button
+        *ngIf="user && user.role === ('ROLE_ADMIN' || 'ROLE_INSTRUCTOR')"
+        mat-raised-button
+        (click)="modifyDialog(course.id)"
+      >
+        <mat-icon aria-hidden="false" aria-label="Example home icon"
+          >edit</mat-icon
+        >
       </button>
     </mat-card-actions>
   </mat-card>

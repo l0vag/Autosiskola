@@ -4,6 +4,8 @@ import { IUser } from 'src/models.model';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CoursesService } from 'src/core-component/courses/shared/courses.service';
+import { users } from './../../../data.mock';
+import { WeekCreatorService } from 'src/helpers/week-creator.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,98 +15,14 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private coursesService: CoursesService
+    private coursesService: CoursesService,
+    private weekCreator: WeekCreatorService
   ) {
-    this.users = [
-      {
-        id: 0,
-        name: 'Pisti',
-        password: 'százhét',
-        role: 'ROLE_INSTRUCTOR',
-        results: [],
-        courses: [],
-      },
-      {
-        id: 1,
-        name: 'Béla',
-        password: 'százhat',
-        role: 'ROLE_INSTRUCTOR',
-        results: [],
-        courses: [],
-      },
-      {
-        id: 2,
-        name: 'Dalma',
-        password: 'százhárom',
-        role: 'ROLE_ADMIN',
-        results: [],
-        courses: [],
-      },
-      {
-        id: 3,
-        name: 'Géza',
-        password: 'tréning',
-        role: 'ROLE_STUDENT',
-        results: [],
-        courses: [],
-      },
-      {
-        id: 4,
-        name: 'Géza2',
-        password: 'tréning2',
-        role: 'ROLE_STUDENT',
-        results: [],
-        courses: [],
-      },
-      {
-        id: 5,
-        name: 'Géza3',
-        password: 'tréning3',
-        role: 'ROLE_STUDENT',
-        results: [],
-        courses: [],
-      },
-      {
-        id: 6,
-        name: 'Géza4',
-        password: 'tréning4',
-        role: 'ROLE_GUEST',
-        results: [],
-        courses: [],
-      },
-      {
-        id: 7,
-        name: 'Géza5',
-        password: 'tréning5',
-        role: 'ROLE_GUEST',
-        results: [],
-        courses: [],
-      },
-      {
-        id: 8,
-        name: 'guest',
-        password: 'guest',
-        role: 'ROLE_GUEST',
-        results: [],
-        courses: [],
-      },
-      {
-        id: 9,
-        name: 'admin',
-        password: 'admin',
-        role: 'ROLE_ADMIN',
-        results: [],
-        courses: [],
-      },
-      {
-        id: 9,
-        name: 'student',
-        password: 'student',
-        role: 'ROLE_STUDENT',
-        results: [],
-        courses: [],
-      },
-    ];
+    this.users = users;
+    let generatedWeek = this.weekCreator.generateCalendar();
+    this.users.forEach((user) => {
+      user.weeks = JSON.parse(JSON.stringify(generatedWeek));
+    });
   }
 
   getUsers(): Observable<Array<IUser>> {
@@ -128,6 +46,7 @@ export class UserService {
       role: 'ROLE_GUEST',
       results: [],
       courses: [],
+      weeks: [],
     };
     this.users.push(user);
   }
@@ -150,5 +69,30 @@ export class UserService {
     if (course) {
       this.getById(userId).courses.push(course);
     }
+  }
+
+  modifyUser(userId: number, newData: IUser) {
+    let user = this.getById(userId);
+    user = newData;
+  }
+
+  occupieClass(
+    instructor: IUser,
+    student: IUser,
+    weekNum: number,
+    dayNum: number,
+    classNum: number
+  ) {
+    let ins = this.getUser(instructor.name);
+    let workWeek = ins.weeks.find((week) => {
+      return week.number === weekNum;
+    });
+    let workDay = workWeek?.workDays[dayNum];
+    let driverClass = workDay.classes.find((driverClass) => {
+      return driverClass.id === classNum;
+    });
+
+    driverClass.isFree = false;
+    driverClass.student = student?.name;
   }
 }

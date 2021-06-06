@@ -13,7 +13,31 @@ export class AuthService {
   public readonly isAuthenticated = this._isAuthenticated.asObservable();
   public readonly user = this._user.asObservable();
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+    // DELETE
+    this._isAuthenticated.next(true);
+
+    this._user.next({
+      // ADMIN
+      /* id: 9,
+      name: 'admin',
+      password: 'admin',
+      role: 'ROLE_ADMIN',
+      results: [],
+      courses: [],
+      weeks: [],*/
+      // STUDENT
+      id: 9,
+      name: 'student',
+      password: 'student',
+      role: 'ROLE_STUDENT',
+      results: [],
+      courses: [],
+      weeks: [],
+    });
+
+    // TO THIS
+  }
 
   authenticate(name: string, password: string) {
     let user = this.userService.getUser(name);

@@ -5,54 +5,48 @@
   style="display: flex; flex-wrap: wrap; width: min-content"
 >
   <mat-form-field>
-    <mat-label>Kurzus címe</mat-label>
+    <mat-label>Vizsga típusa</mat-label>
     <mat-select formControlName="title">
-      <mat-option
-        *ngFor="let type of courseType | keyvalue"
-        [value]="type.value"
-      >
+      <mat-option *ngFor="let type of examType | keyvalue" [value]="type.value">
         {{ type.value }}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <div
-    *ngIf="title.invalid && (title.dirty || title.touched)"
+    *ngIf="title.touched && title.hasError('required')"
     class="alert alert-danger"
   >
-    <div *ngIf="title.errors?.required">Cím megadása kötelező</div>
+    <div>Típus megadása kötelező</div>
   </div>
   <mat-form-field>
     <input
       type="date"
       matInput
-      placeholder="Kezdete"
-      formControlName="startDate"
+      placeholder="Napja"
+      formControlName="examDate"
     />
   </mat-form-field>
   <div
-    *ngIf="startDate.invalid && startDate.touched"
+    *ngIf="examDate.touched && examDate.hasError('required')"
     class="alert alert-danger"
   >
-    <div *ngIf="startDate.errors?.required">
-      Kezdő időpont megadása kötelező
-    </div>
+    <div>Időpont megadása kötelező</div>
   </div>
   <mat-form-field>
     <input
-      type="date"
+      type="time"
       matInput
-      placeholder="Vége"
-      formControlName="finishDate"
+      placeholder="Ideje"
+      formControlName="examTime"
     />
   </mat-form-field>
   <div
-    *ngIf="finishDate.invalid && finishDate.touched"
+    *ngIf="examDate.touched && examTime.hasError('required')"
     class="alert alert-danger"
   >
-    <div *ngIf="finishDate.errors?.required">
-      Záró időpont megadása kötelező
-    </div>
+    <div>Időpont megadása kötelező</div>
   </div>
+
   <mat-form-field>
     <input
       type="number"

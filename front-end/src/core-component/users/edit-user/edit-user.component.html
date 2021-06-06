@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+
+<mat-dialog-content
+  [formGroup]="form"
+  style="display: flex; flex-wrap: wrap; width: min-content"
+>
+  <mat-form-field>
+    <input type="text" matInput placeholder="Név" formControlName="name" />
+  </mat-form-field>
+  <div
+    *ngIf="name.touched && name.hasError('required')"
+    class="alert alert-danger"
+  >
+    <div>Név megadása kötelező</div>
+  </div>
+  <mat-form-field>
+    <mat-label>Szerepkör típusa</mat-label>
+    <mat-select formControlName="role">
+      <mat-option *ngFor="let type of roleType | keyvalue" [value]="type.value">
+        {{ type.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div
+    *ngIf="role.touched && role.hasError('required')"
+    class="alert alert-danger"
+  >
+    <div>Típus megadása kötelező</div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions
+  style="align-items: center; display: flex; justify-content: space-evenly"
+>
+  <button class="mat-raised-button" (click)="close()">Bezárás</button>
+  <button class="mat-raised-button mat-primary" (click)="save()">Mentés</button>
+</mat-dialog-actions>
