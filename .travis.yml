@@ -1,4 +1,5 @@
 language: java
+before-sciprt: cd back-end
 before-install: cd back-end
 install:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
