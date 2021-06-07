@@ -43,7 +43,7 @@ public class User {
     private List<Examresult> results;
 
     @OneToMany(mappedBy = "user")
-    private List<Calendar> calendar;
+    private List<Workweek> workweeks;
 
     @JsonIgnore
     @ManyToMany

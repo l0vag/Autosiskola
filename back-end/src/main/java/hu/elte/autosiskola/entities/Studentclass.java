@@ -30,6 +30,9 @@ public class Studentclass {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
+    @Column
+    private Integer maxNum;
+
     @ManyToMany
     @JsonIgnore
     private List<User> users;

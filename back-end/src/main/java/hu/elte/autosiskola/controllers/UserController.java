@@ -1,14 +1,9 @@
 package hu.elte.autosiskola.controllers;
 
-import hu.elte.autosiskola.entities.Calendar;
 import hu.elte.autosiskola.entities.User;
-import hu.elte.autosiskola.helper.CalendarUpdateHolder;
 import hu.elte.autosiskola.helper.UserUpdateHolder;
-import hu.elte.autosiskola.repositories.CalendarRepository;
 import hu.elte.autosiskola.repositories.ExamRepository;
 import hu.elte.autosiskola.repositories.UserRepository;
-import lombok.Getter;
-import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +15,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -37,10 +31,7 @@ public class UserController {
 
     @Autowired
     private ExamRepository examRepository;
-
-    @Autowired
-    private CalendarRepository calendarRepository;
-
+    
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -119,6 +110,7 @@ public class UserController {
         return true;
     }
 
+    /*
     @GetMapping("/calendar/{id}")
     public ResponseEntity<Iterable<Calendar>> getCalendar(@PathVariable Integer id) {
         if (!checkInstructor(id)) {
@@ -126,21 +118,6 @@ public class UserController {
         }
         return ResponseEntity.ok(calendarRepository.findByInstructorId(id));
     }
-
-    @PutMapping("/calendar/id")
-    public ResponseEntity<User> addCalendar(@PathVariable Integer id, @RequestBody CalendarUpdateHolder toAdd) {
-        if (!checkInstructor(id)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-        Iterator<Calendar> exist = (Iterator<Calendar>) calendarRepository.findExisting(toAdd.getStudent().getId(), toAdd.getDate());
-        if (exist.hasNext()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-        Calendar calendar = new Calendar();
-        calendar.setDate(toAdd.getDate());
-        calendar.setUser(toAdd.getStudent());
-        calendarRepository.save(calendar);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
-    }
+*/
 
 }

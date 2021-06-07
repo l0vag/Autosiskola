@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,28 +14,21 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-
-public class Exam {
+public class Workday {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
-    private String title;
+    private String name;
 
-    @Column
-    @Temporal(TemporalType.DATE)
-    private Date examDate;
-
-    @Column
-    private Integer maxNum;
-
+    @ManyToOne
     @JsonIgnore
-    @ManyToMany
-    private List<User> users;
+    private Workweek workweek;
 
-    @OneToMany(mappedBy = "exam")
-    private List<Examresult> results;
+    @OneToMany(mappedBy="Workday")
+    private List<DriveClass> driveClasses;
+
 
 }

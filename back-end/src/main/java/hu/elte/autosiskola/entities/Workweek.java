@@ -7,24 +7,27 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode
-public class Calendar {
+public class Workweek {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
-    @Temporal(TemporalType.DATE)
-    private Date date;
+    private Integer weekNumber;
 
     @ManyToOne
     @JsonIgnore
     private User user;
+
+    @OneToMany(mappedBy="workweek")
+    private List<Workday> workday;
+
 }
