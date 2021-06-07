@@ -27,7 +27,7 @@ public class Workday {
     @JsonIgnore
     private Workweek workweek;
 
-    @OneToMany(mappedBy="Workday")
+    @OneToMany(mappedBy="workday")
     private List<DriveClass> driveClasses;
 
 

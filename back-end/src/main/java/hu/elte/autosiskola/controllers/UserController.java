@@ -1,7 +1,9 @@
 package hu.elte.autosiskola.controllers;
 
+import hu.elte.autosiskola.entities.DriveClass;
 import hu.elte.autosiskola.entities.User;
 import hu.elte.autosiskola.helper.UserUpdateHolder;
+import hu.elte.autosiskola.repositories.DriveClassRepository;
 import hu.elte.autosiskola.repositories.ExamRepository;
 import hu.elte.autosiskola.repositories.UserRepository;
 import org.slf4j.Logger;
@@ -31,9 +33,12 @@ public class UserController {
 
     @Autowired
     private ExamRepository examRepository;
-    
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private DriveClassRepository driveClassRepository;
 
     @GetMapping("")
     public ResponseEntity<Iterable<User>> getAll() {
@@ -99,25 +104,14 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    private boolean checkInstructor(Integer id) {
+    @GetMapping("/workweek/{id}")
+    private ResponseEntity<Iterable<DriveClass>> getDriveClasses(@PathVariable Integer id) {
         Optional<User> user = userRepository.findById(id);
         if (!user.isPresent()) {
-            return false;
-        }
-        if (user.get().getRole() != User.Role.ROLE_INSTRUCTOR) {
-            return false;
-        }
-        return true;
-    }
-
-    /*
-    @GetMapping("/calendar/{id}")
-    public ResponseEntity<Iterable<Calendar>> getCalendar(@PathVariable Integer id) {
-        if (!checkInstructor(id)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        return ResponseEntity.ok(calendarRepository.findByInstructorId(id));
+
+        return ResponseEntity.ok(driveClassRepository.getAll(user.get().getName()));
     }
-*/
 
 }

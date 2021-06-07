@@ -21,6 +21,9 @@ public class DriveClass {
     private Integer id;
 
     @Column
+    private Integer hour;
+
+    @Column
     private boolean isFree;
 
     @Column

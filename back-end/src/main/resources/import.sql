@@ -14,3 +14,31 @@ INSERT INTO EXAM( exam_date, max_num, title ) values ( '2021-03-06', 5, 'forgalm
 
 INSERT INTO EXAM( exam_date, max_num, title ) values ( '2021-05-06', 7, 'kresz' );
 INSERT INTO EXAM( exam_date, max_num, title ) values ( '2021-06-13', 11, 'kresz' );
+
+INSERT INTO WORKWEEK( week_number, user_id) values ( 1, 1)
+
+INSERT INTO WORKDAY( name, workweek_id ) values ( 'Hétfő', 1 )
+INSERT INTO WORKDAY( name, workweek_id ) values ( 'Kedd', 1 )
+INSERT INTO WORKDAY( name, workweek_id ) values ( 'Szerda', 1 )
+INSERT INTO WORKDAY( name, workweek_id ) values ( 'Csötörtök', 1 )
+INSERT INTO WORKDAY( name, workweek_id ) values ( 'Péntek', 1 )
+
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 1, TRUE, 'Pisti', 1)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 2, TRUE, 'Pisti', 1)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 3, TRUE, 'Pisti', 1)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 4, TRUE, 'Pisti', 1)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 5, TRUE, 'Pisti', 1)
+
+
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 1, TRUE, 'Pisti', 2)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 2, TRUE, 'Pisti', 2)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 3, TRUE, 'Pisti', 2)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 4, TRUE, 'Pisti', 2)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 5, TRUE, 'Pisti', 2)
+
+
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 1, TRUE, 'Pisti', 3)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 2, TRUE, 'Pisti', 3)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 3, TRUE, 'Pisti', 3)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 4, TRUE, 'Pisti', 3)
+INSERT INTO DRIVE_CLASS( hour, is_free, user, workday_id ) values ( 5, TRUE, 'Pisti', 3)
