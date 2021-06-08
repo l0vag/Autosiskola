@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@RestController
 @RequestMapping("/courses")
 public class StudentclassController {
     @Autowired
@@ -57,9 +58,9 @@ public class StudentclassController {
     }
 
     @PutMapping("")
-    public ResponseEntity<Studentclass> addCourse(@RequestBody Studentclass course) {
+    public ResponseEntity<Iterable<Studentclass>> addCourse(@RequestBody Studentclass course) {
         studentclassRepository.save(course);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(studentclassRepository.findAll());
     }
 
     @PatchMapping("{id}")

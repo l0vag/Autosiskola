@@ -27,17 +27,7 @@ public class ExamController {
 
     @GetMapping("")
     public ResponseEntity<Iterable<Exam>> getAll() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        List<String> roles = auth.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
-        if (roles.contains("ROLE_ADMIN")) {
-            return ResponseEntity.ok(examRepository.findAll());
-        }
-        String username = auth.getName();
-        Optional<User> user = userRepository.findByName(username);
-        if (user.isPresent()) {
-            return ResponseEntity.ok(user.get().getExams());
-        }
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok(examRepository.findAll());
     }
 
     @GetMapping("{id}")
@@ -69,7 +59,7 @@ public class ExamController {
         if (!exam.isPresent()) {
             return ResponseEntity.badRequest().build();
         }
-        examRepository.delete(exam.get());
+        examRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
 

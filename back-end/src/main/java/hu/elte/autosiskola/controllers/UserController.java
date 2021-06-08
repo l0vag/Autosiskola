@@ -47,12 +47,7 @@ public class UserController {
 
     @GetMapping("")
     public ResponseEntity<Iterable<User>> getAll() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        List<String> roles = auth.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList());
-        if (roles.contains("ROLE_ADMIN")) {
-            return ResponseEntity.ok(userRepository.findAll());
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(userRepository.findAll());
     }
 
     @GetMapping("{id}")
@@ -61,7 +56,7 @@ public class UserController {
         if (user.isPresent()) {
             return ResponseEntity.ok(user.get());
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.badRequest().build();
     }
 
     @PostMapping("/register")
@@ -78,9 +73,9 @@ public class UserController {
         if (toUpdateUser.isPresent()) {
             toUpdateUser.get().setRole(User.Role.ROLE_STUDENT);
             userRepository.save(toUpdateUser.get());
-            return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+            return ResponseEntity.accepted().build();
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        return ResponseEntity.badRequest().build();
     }
 
     @PutMapping("/addexam/{id}")
@@ -97,22 +92,24 @@ public class UserController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<User> removeUser(@RequestBody User user) {
-        Optional<User> removeUser = userRepository.findByName(user.getName());
-        if (removeUser.isPresent()) {
-            userRepository.delete(user);
-            return ResponseEntity.accepted().build();
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable Integer id) {
+        Optional<User> user = userRepository.findById(id);
+        if (!user.isPresent()) {
+            return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.badRequest().build();
+        userRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 
-    @PatchMapping("/update")
-    public ResponseEntity<User> updateUser(@RequestBody UserUpdateHolder info) {
-        Optional<User> updateUser = userRepository.findByName(info.getUser().getName());
+    @PatchMapping("/update/{id}")
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable Integer id) {
+        Optional<User> updateUser = userRepository.findById(id);
         if (updateUser.isPresent()) {
-            userRepository.delete(info.getUser());
-            userRepository.save(info.getUpdatedUser());
+            updateUser.get().setName(user.getName());
+            updateUser.get().setRole(user.getRole());
+            updateUser.get().setPassword(user.getPassword());
+            userRepository.save(updateUser.get());
             return ResponseEntity.accepted().build();
         }
         return ResponseEntity.badRequest().build();
@@ -139,7 +136,7 @@ public class UserController {
         dc.setFree(false);
         dc.setHour(calendarHelper.getClassNum());
         Workday wd = new Workday();
-        wd.setName(String.valueOf(calendarHelper.getDayNum()));
+        wd.setName((calendarHelper.getDayNum().toString()));
         wd.setWorkweek(workweekRepository.findById(calendarHelper.getWeekNum()).get());
         dc.setWorkday(wd);
         driveClassRepository.save(dc);

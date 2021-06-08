@@ -15,6 +15,12 @@ INSERT INTO EXAM( exam_date, max_num, title ) values ( '2021-03-06', 5, 'forgalm
 INSERT INTO EXAM( exam_date, max_num, title ) values ( '2021-05-06', 7, 'kresz' );
 INSERT INTO EXAM( exam_date, max_num, title ) values ( '2021-06-13', 11, 'kresz' );
 
+INSERT INTO STUDENTCLASS( end_date, max_num, start_date ) values ('2021-09-11', 7, '2021-08-11');
+INSERT INTO STUDENTCLASS( end_date, max_num, start_date ) values ('2021-09-21', 6, '2021-05-12');
+INSERT INTO STUDENTCLASS( end_date, max_num, start_date ) values ('2021-09-31', 5, '2021-06-13');
+INSERT INTO STUDENTCLASS( end_date, max_num, start_date ) values ('2021-10-01', 4, '2021-07-11');
+INSERT INTO STUDENTCLASS( end_date, max_num, start_date ) values ('2021-10-11', 3, '2021-08-01');
+
 INSERT INTO WORKWEEK( week_number, user_id) values ( 1, 1)
 
 INSERT INTO WORKDAY( name, workweek_id ) values ( 'Hétfő', 1 )
